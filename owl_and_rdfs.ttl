@@ -1,0 +1,59 @@
+@prefix rdf:       <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:      <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:       <http://www.w3.org/2002/07/owl#> .
+@prefix skos:      <http://www.w3.org/2004/02/skos/core#> .
+@prefix mi:        <http://mymusicalinstruments.org/> .
+
+# Main classes
+mi:Instrument        rdf:type owl:Class .
+mi:SoundMechanism    rdf:type owl:Class .   
+mi:BodyMaterial      rdf:type owl:Class .   
+
+# Instrument subclasses
+mi:StringInstrument                 rdfs:subClassOf mi:Instrument 
+  rdfs:label "String instruments"@en ;
+  rdfs:comment "Instruments that generate tones by one or more strings stretched between two points."@en ;
+.
+
+mi:ElectronicInstrument             rdfs:subClassOf mi:Instrument .
+mi:KeyboardInstrument               rdfs:subClassOf mi:Instrument .
+mi:WindInstrument                   rdfs:subClassOf mi:Instrument .
+mi:PercussionInstrument             rdfs:subClassOf mi:Instrument .
+
+# Family subclasses
+mi:BowedStringInstrument            rdfs:subClassOf mi:StringInstrument .
+mi:PluckedStringInstrument          rdfs:subClassOf mi:StringInstrument .
+mi:BrassInstrument                  rdfs:subClassOf mi:WindInstrument .
+mi:WoodwindInstrument               rdfs:subClassOf mi:WindInstrument .
+mi:ElectronicStringInstrument       rdfs:subClassOf mi:ElectronicInstrument .
+mi:ElectronicKeyboardInstrument     rdfs:subClassOf mi:ElectronicInstrument .
+
+mi:ElectricSound                    rdfs:subClassOf mi:mi:SoundMechanism .
+mi:Synthetizer                      rdfs:subClassOf mi:mi:ElectricSound .
+
+# Object properties 
+mi:soundProductionMechanism a owl:ObjectProperty ;  
+  rdfs:domain mi:Instrument ;
+  rdfs:range  mi:SoundMechanism .
+
+mi:madeOf a owl:ObjectProperty ;
+  rdfs:domain mi:Instrument ;
+  rdfs:range  mi:BodyMaterial .
+
+mi:electricSound a owl:ObjectProperty ;
+  rdfs:domain mi:ElectronicInstrument ;
+  rdfs:range  mi:ElectricSound .
+
+# SKOS Definitions
+mi:StringInstrument rdf:type skos:Concept ;
+  skos:prefLabel    "String instruments"@en ;
+  skos:altLabel     "Instrumentos de cuerda"@es ;
+  skos:altLabel     "Chordophones"@en ;
+  skos:definition   "Instruments that generate tones by one or more strings stretched between two points."@en ;
+  skos:exactMatch   <http://www.wikidata.org/wiki/Q1798603> ;
+  skos:topConceptOf mi:scheme-family ;
+  skos:inScheme     mi:scheme-family ;
+  skos:narrower
+    mi:BowedStringInstrument ,
+  .
+

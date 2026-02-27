@@ -1,0 +1,1221 @@
+@prefix rdf:       <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:      <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos:      <http://www.w3.org/2004/02/skos/core#> .
+@prefix mi:        <http://mymusicalinstruments.org/> .
+@prefix mi_fm:     <http://mymusicalinstruments.org/family/> .
+@prefix mi_range:  <http://mymusicalinstruments.org/range/> .
+@prefix mi_period: <http://mymusicalinstruments.org/period/> .
+@prefix mi_region: <http://mymusicalinstruments.org/region/> .
+@prefix mi_prod:   <http://mymusicalinstruments.org/production/> .
+
+#################################################################
+# ROOT SCHEME — scheme-of-schemes, holds no concepts directly
+#################################################################
+
+mi:musical-instruments a skos:ConceptScheme ;
+  skos:prefLabel  "Musical instruments"@en ;
+  skos:altLabel   "Musical instrument"@en ;
+  skos:altLabel   "Instrumentos musicales"@es ;
+  skos:altLabel   "Instrumento musical"@es ;
+  skos:definition "Root scheme-of-schemes for the musical instruments vocabulary. Concepts live in the five sub-schemes; this node is the single entry point for the full vocabulary."@en ;
+  skos:exactMatch <http://www.wikidata.org/wiki/Q34379> ;
+  skos:scopeNote  "This scheme contains no concepts directly. Navigate via mi:hasSubScheme to the five axis schemes: family, range, period, region, production."@en ;
+  mi:hasSubScheme
+    mi:scheme-family ,
+    mi:scheme-range ,
+    mi:scheme-period ,
+    mi:scheme-region ,
+    mi:scheme-production
+  .
+
+
+#################################################################
+# SCHEME 1 — FAMILY
+# The only axis with a proper skos:broader/narrower hierarchy (L1–L4).
+# All other axes are intentionally flat.
+#################################################################
+
+mi:scheme-family a skos:ConceptScheme ;
+  skos:prefLabel   "Instrument families"@en ;
+  skos:altLabel    "Familias de instrumentos"@es ;
+  skos:definition  "Classifies musical instruments by organological family, sub-family, instrument, and variant (L1–L4)."@en ;
+  skos:hasTopConcept
+    mi_fm:string-instruments ,
+    mi_fm:wind-instruments ,
+    mi_fm:percussion-instruments ,
+    mi_fm:keyboard-instruments ,
+    mi_fm:electronic-instruments
+  .
+
+# ── L1: Families ────────────────────────────────────────────────
+
+mi_fm:string-instruments a skos:Concept ;
+  skos:prefLabel    "String instruments"@en ;
+  skos:altLabel     "Instrumentos de cuerda"@es ;
+  skos:altLabel     "Chordophones"@en ;
+  skos:definition   "Instruments that generate tones by one or more strings stretched between two points."@en ;
+  skos:exactMatch   <http://www.wikidata.org/wiki/Q1798603> ;
+  skos:topConceptOf mi:scheme-family ;
+  skos:inScheme     mi:scheme-family ;
+  skos:narrower
+    mi_fm:bowed-string-instruments ,
+    mi_fm:plucked-string-instruments
+  .
+
+mi_fm:wind-instruments a skos:Concept ;
+  skos:prefLabel    "Wind instruments"@en ;
+  skos:altLabel     "Instrumentos de viento"@es ;
+  skos:altLabel     "Aerophones"@en ;
+  skos:definition   "Instruments that produce sound by the vibration of air, typically by the player's breath."@en ;
+  skos:exactMatch   <http://www.wikidata.org/wiki/Q173453> ;
+  skos:topConceptOf mi:scheme-family ;
+  skos:inScheme     mi:scheme-family ;
+  skos:narrower
+    mi_fm:woodwind-instruments ,
+    mi_fm:brass-instruments
+  .
+
+mi_fm:percussion-instruments a skos:Concept ;
+  skos:prefLabel    "Percussion instruments"@en ;
+  skos:altLabel     "Instrumentos de percusión"@es ;
+  skos:definition   "Instruments that produce sound by being struck, shaken, or scraped."@en ;
+  skos:exactMatch   <http://www.wikidata.org/wiki/Q133163> ;
+  skos:topConceptOf mi:scheme-family ;
+  skos:inScheme     mi:scheme-family ;
+  skos:narrower
+    mi_fm:membranophones ,
+    mi_fm:idiophones
+  .
+
+mi_fm:keyboard-instruments a skos:Concept ;
+  skos:prefLabel    "Keyboard instruments"@en ;
+  skos:altLabel     "Instrumentos de teclado"@es ;
+  skos:definition   "Instruments played using a keyboard, where keys trigger a sound-producing mechanism."@en ;
+  skos:exactMatch   <http://www.wikidata.org/wiki/Q52954> ;
+  skos:topConceptOf mi:scheme-family ;
+  skos:inScheme     mi:scheme-family ;
+  skos:narrower
+    mi_fm:acoustic-keyboard-instruments ,
+    mi_fm:electronic-keyboard-instruments
+  .
+
+mi_fm:electronic-instruments a skos:Concept ;
+  skos:prefLabel    "Electronic instruments"@en ;
+  skos:altLabel     "Instrumentos electrónicos"@es ;
+  skos:definition   "Instruments that generate or modify sounds primarily using electronic circuitry."@en ;
+  skos:exactMatch   <http://www.wikidata.org/wiki/Q1327500> ;
+  skos:topConceptOf mi:scheme-family ;
+  skos:inScheme     mi:scheme-family ;
+  skos:narrower
+    mi_fm:electronic-string-instruments
+  .
+
+# ── L2: Sub-families ────────────────────────────────────────────
+
+mi_fm:bowed-string-instruments a skos:Concept ;
+  skos:prefLabel  "Bowed string instruments"@en ;
+  skos:altLabel   "Instrumentos de cuerda frotada"@es ;
+  skos:definition "String instruments played by drawing a bow across one or more strings."@en ;
+  skos:exactMatch <http://www.wikidata.org/wiki/Q192096> ;
+  skos:broader    mi_fm:string-instruments ;
+  skos:inScheme   mi:scheme-family ;
+  skos:narrower   mi_fm:violin .
+
+mi_fm:plucked-string-instruments a skos:Concept ;
+  skos:prefLabel  "Plucked string instruments"@en ;
+  skos:altLabel   "Instrumentos de cuerda pulsada"@es ;
+  skos:definition "String instruments played by plucking the strings with fingers or a plectrum."@en ;
+  skos:exactMatch <http://www.wikidata.org/wiki/Q230262> ;
+  skos:broader    mi_fm:string-instruments ;
+  skos:inScheme   mi:scheme-family ;
+  skos:narrower   mi_fm:guitar .
+
+mi_fm:woodwind-instruments a skos:Concept ;
+  skos:prefLabel  "Woodwind instruments"@en ;
+  skos:altLabel   "Instrumentos de viento-madera"@es ;
+  skos:definition "Wind instruments that produce sound by splitting an air stream or using reeds."@en ;
+  skos:exactMatch <http://www.wikidata.org/wiki/Q181247> ;
+  skos:broader    mi_fm:wind-instruments ;
+  skos:inScheme   mi:scheme-family ;
+  skos:narrower
+    mi_fm:flute ,
+    mi_fm:clarinet
+  .
+
+mi_fm:brass-instruments a skos:Concept ;
+  skos:prefLabel  "Brass instruments"@en ;
+  skos:altLabel   "Instrumentos de viento-metal"@es ;
+  skos:definition "Wind instruments that produce sound by sympathetic vibration of the player's lips in a mouthpiece."@en ;
+  skos:exactMatch <http://www.wikidata.org/wiki/Q180744> ;
+  skos:broader    mi_fm:wind-instruments ;
+  skos:inScheme   mi:scheme-family ;
+  skos:narrower   mi_fm:trumpet .
+
+mi_fm:membranophones a skos:Concept ;
+  skos:prefLabel  "Membranophones"@en ;
+  skos:altLabel   "Membranófonos"@es ;
+  skos:definition "Percussion instruments that produce sound primarily by a vibrating stretched membrane."@en ;
+  skos:exactMatch <http://www.wikidata.org/wiki/Q212892> ;
+  skos:broader    mi_fm:percussion-instruments ;
+  skos:inScheme   mi:scheme-family ;
+  skos:narrower   mi_fm:snare-drum .
+
+mi_fm:idiophones a skos:Concept ;
+  skos:prefLabel  "Idiophones"@en ;
+  skos:altLabel   "Idiófonos"@es ;
+  skos:definition "Percussion instruments that produce sound from the vibration of the instrument body itself."@en ;
+  skos:exactMatch <http://www.wikidata.org/wiki/Q12639> ;
+  skos:broader    mi_fm:percussion-instruments ;
+  skos:inScheme   mi:scheme-family ;
+  skos:narrower
+    mi_fm:marimba ,
+    mi_fm:cymbal
+  .
+
+mi_fm:acoustic-keyboard-instruments a skos:Concept ;
+  skos:prefLabel  "Acoustic keyboard instruments"@en ;
+  skos:altLabel   "Instrumentos de teclado acústicos"@es ;
+  skos:definition "Keyboard instruments whose primary sound production is acoustic, not electronic."@en ;
+  skos:broader    mi_fm:keyboard-instruments ;
+  skos:inScheme   mi:scheme-family ;
+  skos:narrower
+    mi_fm:piano ,
+    mi_fm:organ
+  .
+
+mi_fm:electronic-keyboard-instruments a skos:Concept ;
+  skos:prefLabel  "Electronic keyboard instruments"@en ;
+  skos:altLabel   "Instrumentos de teclado electrónicos"@es ;
+  skos:definition "Keyboard instruments whose primary sound production is electronic or digitally generated."@en ;
+  skos:broader    mi_fm:keyboard-instruments ;
+  skos:inScheme   mi:scheme-family ;
+  skos:narrower   mi_fm:synthesizer .
+
+mi_fm:electronic-string-instruments a skos:Concept ;
+  skos:prefLabel  "Electronic string instruments"@en ;
+  skos:altLabel   "Instrumentos de cuerda electrónicos"@es ;
+  skos:definition "String instruments that use electronics for amplification and/or sound shaping as a primary feature."@en ;
+  skos:broader    mi_fm:electronic-instruments ;
+  skos:inScheme   mi:scheme-family ;
+  skos:narrower   mi_fm:electric-guitar .
+
+# ── L3: Instruments ─────────────────────────────────────────────
+
+mi_fm:violin a skos:Concept ;
+  skos:prefLabel  "Violin"@en ;
+  skos:altLabel   "Violín"@es ;
+  skos:altLabel   "Fiddle"@en ;
+  skos:definition "A bowed string instrument with four strings tuned in perfect fifths."@en ;
+  skos:exactMatch <http://www.wikidata.org/wiki/Q8355> ;
+  skos:broader    mi_fm:bowed-string-instruments ;
+  skos:inScheme   mi:scheme-family ;
+  skos:narrower
+    mi_fm:baroque-violin ,
+    mi_fm:electric-violin ,
+    mi_fm:five-string-violin
+  .
+
+mi_fm:guitar a skos:Concept ;
+  skos:prefLabel  "Guitar"@en ;
+  skos:altLabel   "Guitarra"@es ;
+  skos:definition "A fretted string instrument typically played by strumming or plucking."@en ;
+  skos:exactMatch <http://www.wikidata.org/wiki/Q6607> ;
+  skos:broader    mi_fm:plucked-string-instruments ;
+  skos:inScheme   mi:scheme-family ;
+  skos:narrower
+    mi_fm:classical-guitar ,
+    mi_fm:steel-string-acoustic-guitar ,
+    mi_fm:electric-guitar
+  .
+
+mi_fm:flute a skos:Concept ;
+  skos:prefLabel  "Flute"@en ;
+  skos:altLabel   "Flauta"@es ;
+  skos:definition "A woodwind instrument that produces sound from the flow of air across an opening."@en ;
+  skos:exactMatch <http://www.wikidata.org/wiki/Q11405> ;
+  skos:broader    mi_fm:woodwind-instruments ;
+  skos:inScheme   mi:scheme-family ;
+  skos:narrower
+    mi_fm:concert-flute ,
+    mi_fm:alto-flute ,
+    mi_fm:piccolo
+  .
+
+mi_fm:clarinet a skos:Concept ;
+  skos:prefLabel  "Clarinet"@en ;
+  skos:altLabel   "Clarinete"@es ;
+  skos:definition "A woodwind instrument that produces sound using a single reed mouthpiece."@en ;
+  skos:exactMatch <http://www.wikidata.org/wiki/Q8343> ;
+  skos:broader    mi_fm:woodwind-instruments ;
+  skos:inScheme   mi:scheme-family ;
+  skos:narrower
+    mi_fm:b-flat-clarinet ,
+    mi_fm:a-clarinet ,
+    mi_fm:bass-clarinet
+  .
+
+mi_fm:trumpet a skos:Concept ;
+  skos:prefLabel  "Trumpet"@en ;
+  skos:altLabel   "Trompeta"@es ;
+  skos:definition "A brass instrument commonly played with valves and a cup-shaped mouthpiece."@en ;
+  skos:exactMatch <http://www.wikidata.org/wiki/Q8338> ;
+  skos:broader    mi_fm:brass-instruments ;
+  skos:inScheme   mi:scheme-family ;
+  skos:narrower
+    mi_fm:b-flat-trumpet ,
+    mi_fm:c-trumpet ,
+    mi_fm:piccolo-trumpet
+  .
+
+mi_fm:snare-drum a skos:Concept ;
+  skos:prefLabel  "Snare drum"@en ;
+  skos:altLabel   "Caja"@es ;
+  skos:altLabel   "Tarola"@es ;
+  skos:definition "A drum with snares stretched across the lower head, producing a sharp rattling timbre."@en ;
+  skos:exactMatch <http://www.wikidata.org/wiki/Q208421> ;
+  skos:broader    mi_fm:membranophones ;
+  skos:inScheme   mi:scheme-family ;
+  skos:narrower
+    mi_fm:orchestral-snare-drum ,
+    mi_fm:marching-snare-drum ,
+    mi_fm:piccolo-snare-drum
+  .
+
+mi_fm:marimba a skos:Concept ;
+  skos:prefLabel  "Marimba"@en ;
+  skos:altLabel   "Marimba"@es ;
+  skos:definition "A pitched percussion instrument with wooden bars struck by mallets, with resonators."@en ;
+  skos:exactMatch <http://www.wikidata.org/wiki/Q220971> ;
+  skos:broader    mi_fm:idiophones ;
+  skos:inScheme   mi:scheme-family ;
+  skos:narrower
+    mi_fm:four-octave-marimba ,
+    mi_fm:five-octave-marimba ,
+    mi_fm:concert-marimba
+  .
+
+mi_fm:cymbal a skos:Concept ;
+  skos:prefLabel  "Cymbal"@en ;
+  skos:altLabel   "Platillo"@es ;
+  skos:definition "A percussion instrument consisting of a thin, round metal plate."@en ;
+  skos:exactMatch <http://www.wikidata.org/wiki/Q190172> ;
+  skos:broader    mi_fm:idiophones ;
+  skos:inScheme   mi:scheme-family ;
+  skos:narrower
+    mi_fm:crash-cymbal ,
+    mi_fm:ride-cymbal ,
+    mi_fm:hi-hat-cymbals
+  .
+
+mi_fm:piano a skos:Concept ;
+  skos:prefLabel  "Piano"@en ;
+  skos:altLabel   "Piano"@es ;
+  skos:altLabel   "Pianoforte"@en ;
+  skos:definition "An acoustic keyboard instrument where hammers strike strings when keys are pressed."@en ;
+  skos:exactMatch <http://www.wikidata.org/wiki/Q5994> ;
+  skos:broader    mi_fm:acoustic-keyboard-instruments ;
+  skos:inScheme   mi:scheme-family ;
+  skos:narrower
+    mi_fm:grand-piano ,
+    mi_fm:upright-piano ,
+    mi_fm:prepared-piano
+  .
+
+mi_fm:organ a skos:Concept ;
+  skos:prefLabel  "Organ"@en ;
+  skos:altLabel   "Órgano"@es ;
+  skos:definition "A keyboard instrument producing sound by driving air through pipes or via electromechanical/electronic tone generation."@en ;
+  skos:exactMatch <http://www.wikidata.org/wiki/Q1444> ;
+  skos:broader    mi_fm:acoustic-keyboard-instruments ;
+  skos:inScheme   mi:scheme-family ;
+  skos:narrower
+    mi_fm:pipe-organ ,
+    mi_fm:reed-organ ,
+    mi_fm:hammond-organ
+  .
+
+mi_fm:synthesizer a skos:Concept ;
+  skos:prefLabel  "Synthesizer"@en ;
+  skos:altLabel   "Sintetizador"@es ;
+  skos:altLabel   "Synth"@en ;
+  skos:definition "An electronic instrument capable of producing a wide range of sounds via sound synthesis."@en ;
+  skos:exactMatch <http://www.wikidata.org/wiki/Q163829> ;
+  skos:broader    mi_fm:electronic-keyboard-instruments ;
+  skos:inScheme   mi:scheme-family ;
+  skos:narrower
+    mi_fm:analog-synthesizer ,
+    mi_fm:fm-synthesizer ,
+    mi_fm:wavetable-synthesizer
+  .
+
+# electric-guitar: polyhierarchy — broader is both guitar (plucked) and
+# electronic-string-instruments. Valid in SKOS.
+mi_fm:electric-guitar a skos:Concept ;
+  skos:prefLabel  "Electric guitar"@en ;
+  skos:altLabel   "Guitarra eléctrica"@es ;
+  skos:definition "A guitar that uses pickups and amplification; often solid-body or semi-hollow."@en ;
+  skos:broader
+    mi_fm:guitar ,
+    mi_fm:electronic-string-instruments ;
+  skos:inScheme   mi:scheme-family .
+
+# ── L4: Variants ────────────────────────────────────────────────
+
+# Violin variants
+mi_fm:baroque-violin a skos:Concept ;
+  skos:prefLabel  "Baroque violin"@en ;
+  skos:altLabel   "Violín barroco"@es ;
+  skos:definition "A violin in Baroque setup: gut strings and historically informed fittings and technique."@en ;
+  skos:broader    mi_fm:violin ;
+  skos:inScheme   mi:scheme-family .
+
+mi_fm:electric-violin a skos:Concept ;
+  skos:prefLabel  "Electric violin"@en ;
+  skos:altLabel   "Violín eléctrico"@es ;
+  skos:definition "A violin designed for electronic amplification, typically using pickups."@en ;
+  skos:broader    mi_fm:violin ;
+  skos:inScheme   mi:scheme-family .
+
+mi_fm:five-string-violin a skos:Concept ;
+  skos:prefLabel  "Five-string violin"@en ;
+  skos:altLabel   "Violín de cinco cuerdas"@es ;
+  skos:definition "A violin variant with five strings, typically adding a lower C string."@en ;
+  skos:broader    mi_fm:violin ;
+  skos:inScheme   mi:scheme-family .
+
+# Guitar variants
+mi_fm:classical-guitar a skos:Concept ;
+  skos:prefLabel  "Classical guitar"@en ;
+  skos:altLabel   "Guitarra clásica"@es ;
+  skos:definition "A guitar with nylon strings and a wider neck, used in classical and related traditions."@en ;
+  skos:broader    mi_fm:guitar ;
+  skos:inScheme   mi:scheme-family .
+
+mi_fm:steel-string-acoustic-guitar a skos:Concept ;
+  skos:prefLabel  "Steel-string acoustic guitar"@en ;
+  skos:altLabel   "Guitarra acústica de cuerdas de acero"@es ;
+  skos:definition "An acoustic guitar using steel strings, common in folk, pop, and contemporary styles."@en ;
+  skos:broader    mi_fm:guitar ;
+  skos:inScheme   mi:scheme-family .
+
+# Flute variants
+mi_fm:concert-flute a skos:Concept ;
+  skos:prefLabel  "Concert flute"@en ;
+  skos:altLabel   "Flauta travesera de concierto"@es ;
+  skos:definition "The standard Western transverse flute used in orchestras and ensembles."@en ;
+  skos:broader    mi_fm:flute ;
+  skos:inScheme   mi:scheme-family .
+
+mi_fm:alto-flute a skos:Concept ;
+  skos:prefLabel  "Alto flute"@en ;
+  skos:altLabel   "Flauta alto"@es ;
+  skos:definition "A larger, lower-pitched member of the flute family."@en ;
+  skos:broader    mi_fm:flute ;
+  skos:inScheme   mi:scheme-family .
+
+mi_fm:piccolo a skos:Concept ;
+  skos:prefLabel  "Piccolo"@en ;
+  skos:altLabel   "Flautín"@es ;
+  skos:definition "A small, high-pitched flute sounding an octave above the concert flute."@en ;
+  skos:broader    mi_fm:flute ;
+  skos:inScheme   mi:scheme-family .
+
+# Clarinet variants
+mi_fm:b-flat-clarinet a skos:Concept ;
+  skos:prefLabel  "B♭ clarinet"@en ;
+  skos:altLabel   "Clarinete en Si♭"@es ;
+  skos:definition "The most common clarinet, pitched in B♭, used across orchestral, band, and chamber contexts."@en ;
+  skos:broader    mi_fm:clarinet ;
+  skos:inScheme   mi:scheme-family .
+
+mi_fm:a-clarinet a skos:Concept ;
+  skos:prefLabel  "A clarinet"@en ;
+  skos:altLabel   "Clarinete en La"@es ;
+  skos:definition "A clarinet pitched in A, widely used in orchestral repertoire."@en ;
+  skos:broader    mi_fm:clarinet ;
+  skos:inScheme   mi:scheme-family .
+
+mi_fm:bass-clarinet a skos:Concept ;
+  skos:prefLabel  "Bass clarinet"@en ;
+  skos:altLabel   "Clarinete bajo"@es ;
+  skos:definition "A large clarinet sounding an octave lower than the B♭ clarinet."@en ;
+  skos:broader    mi_fm:clarinet ;
+  skos:inScheme   mi:scheme-family .
+
+# Trumpet variants
+mi_fm:b-flat-trumpet a skos:Concept ;
+  skos:prefLabel  "B♭ trumpet"@en ;
+  skos:altLabel   "Trompeta en Si♭"@es ;
+  skos:definition "The most common orchestral and band trumpet, pitched in B♭."@en ;
+  skos:broader    mi_fm:trumpet ;
+  skos:inScheme   mi:scheme-family .
+
+mi_fm:c-trumpet a skos:Concept ;
+  skos:prefLabel  "C trumpet"@en ;
+  skos:altLabel   "Trompeta en Do"@es ;
+  skos:definition "A trumpet pitched in C, preferred by many orchestral players for its brighter tone."@en ;
+  skos:broader    mi_fm:trumpet ;
+  skos:inScheme   mi:scheme-family .
+
+mi_fm:piccolo-trumpet a skos:Concept ;
+  skos:prefLabel  "Piccolo trumpet"@en ;
+  skos:altLabel   "Trompeta piccolo"@es ;
+  skos:definition "A small, high-pitched trumpet, typically pitched in B♭ or A an octave above standard."@en ;
+  skos:broader    mi_fm:trumpet ;
+  skos:inScheme   mi:scheme-family .
+
+# Snare drum variants
+mi_fm:orchestral-snare-drum a skos:Concept ;
+  skos:prefLabel  "Orchestral snare drum"@en ;
+  skos:altLabel   "Caja orquestal"@es ;
+  skos:definition "A snare drum optimised for orchestral use, typically deeper with refined snare response."@en ;
+  skos:broader    mi_fm:snare-drum ;
+  skos:inScheme   mi:scheme-family .
+
+mi_fm:marching-snare-drum a skos:Concept ;
+  skos:prefLabel  "Marching snare drum"@en ;
+  skos:altLabel   "Caja de marcha"@es ;
+  skos:definition "A deep, high-tension snare drum designed for marching ensembles."@en ;
+  skos:broader    mi_fm:snare-drum ;
+  skos:inScheme   mi:scheme-family .
+
+mi_fm:piccolo-snare-drum a skos:Concept ;
+  skos:prefLabel  "Piccolo snare drum"@en ;
+  skos:altLabel   "Caja piccolo"@es ;
+  skos:definition "A shallow snare drum producing a high, crisp sound."@en ;
+  skos:broader    mi_fm:snare-drum ;
+  skos:inScheme   mi:scheme-family .
+
+# Marimba variants
+mi_fm:four-octave-marimba a skos:Concept ;
+  skos:prefLabel  "Four-octave marimba"@en ;
+  skos:altLabel   "Marimba de cuatro octavas"@es ;
+  skos:definition "A marimba spanning four octaves, common in educational and smaller ensemble settings."@en ;
+  skos:broader    mi_fm:marimba ;
+  skos:inScheme   mi:scheme-family .
+
+mi_fm:five-octave-marimba a skos:Concept ;
+  skos:prefLabel  "Five-octave marimba"@en ;
+  skos:altLabel   "Marimba de cinco octavas"@es ;
+  skos:definition "A concert marimba with five-octave range used in professional solo and orchestral contexts."@en ;
+  skos:broader    mi_fm:marimba ;
+  skos:inScheme   mi:scheme-family .
+
+mi_fm:concert-marimba a skos:Concept ;
+  skos:prefLabel  "Concert marimba"@en ;
+  skos:altLabel   "Marimba de concierto"@es ;
+  skos:definition "A professional-grade marimba, typically 4.5–5 octaves, built for concert performance."@en ;
+  skos:broader    mi_fm:marimba ;
+  skos:inScheme   mi:scheme-family .
+
+# Cymbal variants
+mi_fm:crash-cymbal a skos:Concept ;
+  skos:prefLabel  "Crash cymbal"@en ;
+  skos:altLabel   "Platillo crash"@es ;
+  skos:definition "A cymbal struck for a loud, immediate accent, decaying quickly."@en ;
+  skos:broader    mi_fm:cymbal ;
+  skos:inScheme   mi:scheme-family .
+
+mi_fm:ride-cymbal a skos:Concept ;
+  skos:prefLabel  "Ride cymbal"@en ;
+  skos:altLabel   "Platillo ride"@es ;
+  skos:definition "A large cymbal used to maintain a steady rhythmic pattern with a clear, defined ping."@en ;
+  skos:broader    mi_fm:cymbal ;
+  skos:inScheme   mi:scheme-family .
+
+mi_fm:hi-hat-cymbals a skos:Concept ;
+  skos:prefLabel  "Hi-hat cymbals"@en ;
+  skos:altLabel   "Platillos hi-hat"@es ;
+  skos:definition "A pair of cymbals mounted on a stand, operated by a foot pedal and/or stick."@en ;
+  skos:broader    mi_fm:cymbal ;
+  skos:inScheme   mi:scheme-family .
+
+# Piano variants
+mi_fm:grand-piano a skos:Concept ;
+  skos:prefLabel  "Grand piano"@en ;
+  skos:altLabel   "Piano de cola"@es ;
+  skos:definition "A piano with a horizontal, harp-shaped frame, offering superior action and resonance."@en ;
+  skos:broader    mi_fm:piano ;
+  skos:inScheme   mi:scheme-family .
+
+mi_fm:upright-piano a skos:Concept ;
+  skos:prefLabel  "Upright piano"@en ;
+  skos:altLabel   "Piano vertical"@es ;
+  skos:definition "A piano with a vertical frame and strings, suited to domestic and rehearsal use."@en ;
+  skos:broader    mi_fm:piano ;
+  skos:inScheme   mi:scheme-family .
+
+mi_fm:prepared-piano a skos:Concept ;
+  skos:prefLabel  "Prepared piano"@en ;
+  skos:altLabel   "Piano preparado"@es ;
+  skos:definition "A piano whose timbre is altered by placing objects on or between the strings."@en ;
+  skos:broader    mi_fm:piano ;
+  skos:inScheme   mi:scheme-family .
+
+# Organ variants
+mi_fm:pipe-organ a skos:Concept ;
+  skos:prefLabel  "Pipe organ"@en ;
+  skos:altLabel   "Órgano de tubos"@es ;
+  skos:definition "An organ that produces sound by driving pressurised air through metal or wooden pipes."@en ;
+  skos:broader    mi_fm:organ ;
+  skos:inScheme   mi:scheme-family .
+
+mi_fm:reed-organ a skos:Concept ;
+  skos:prefLabel  "Reed organ"@en ;
+  skos:altLabel   "Órgano de lengüetas"@es ;
+  skos:definition "An organ that generates sound by air flowing over free metal reeds; includes harmoniums."@en ;
+  skos:broader    mi_fm:organ ;
+  skos:inScheme   mi:scheme-family .
+
+mi_fm:hammond-organ a skos:Concept ;
+  skos:prefLabel  "Hammond organ"@en ;
+  skos:altLabel   "Órgano Hammond"@es ;
+  skos:definition "An electromechanical organ using rotating tonewheels to generate audio signals."@en ;
+  skos:broader    mi_fm:organ ;
+  skos:inScheme   mi:scheme-family .
+
+# Synthesizer variants
+mi_fm:analog-synthesizer a skos:Concept ;
+  skos:prefLabel  "Analog synthesizer"@en ;
+  skos:altLabel   "Sintetizador analógico"@es ;
+  skos:definition "A synthesizer generating sound via analogue electronic circuits: VCO, VCF, VCA."@en ;
+  skos:broader    mi_fm:synthesizer ;
+  skos:inScheme   mi:scheme-family .
+
+mi_fm:fm-synthesizer a skos:Concept ;
+  skos:prefLabel  "FM synthesizer"@en ;
+  skos:altLabel   "Sintetizador FM"@es ;
+  skos:definition "A synthesizer generating sounds via frequency modulation of carrier waves by modulator signals."@en ;
+  skos:broader    mi_fm:synthesizer ;
+  skos:inScheme   mi:scheme-family .
+
+mi_fm:wavetable-synthesizer a skos:Concept ;
+  skos:prefLabel  "Wavetable synthesizer"@en ;
+  skos:altLabel   "Sintetizador de tabla de ondas"@es ;
+  skos:definition "A synthesizer generating sound by reading through stored digital waveform tables."@en ;
+  skos:broader    mi_fm:synthesizer ;
+  skos:inScheme   mi:scheme-family .
+
+
+#################################################################
+# SCHEME 2 — RANGE
+# Flat — facet values have no hierarchy among themselves.
+# Each value is a skos:Concept; mi:hasRange links instruments to values.
+# OWL migration: replace skos:Concept with owl:NamedIndividual,
+#                replace mi:hasRange with owl:ObjectProperty.
+#################################################################
+
+mi:scheme-range a skos:ConceptScheme ;
+  skos:prefLabel   "Register / range"@en ;
+  skos:altLabel    "Registro"@es ;
+  skos:definition  "Classifies instruments by their primary sounding register. Flat — no hierarchy among values."@en ;
+  skos:hasTopConcept
+    mi_range:soprano ,
+    mi_range:mezzo-soprano ,
+    mi_range:alto ,
+    mi_range:tenor ,
+    mi_range:bass ,
+    mi_range:wide-range ,
+    mi_range:unpitched
+  .
+
+mi_range:soprano a skos:Concept ;
+  skos:prefLabel    "Soprano"@en ;
+  skos:altLabel     "Soprano"@es ;
+  skos:definition   "Primary sounding range in the soprano register (approximately C5 and above)."@en ;
+  skos:topConceptOf mi:scheme-range ;
+  skos:inScheme     mi:scheme-range .
+
+mi_range:mezzo-soprano a skos:Concept ;
+  skos:prefLabel    "Mezzo-soprano"@en ;
+  skos:altLabel     "Mezzo-soprano"@es ;
+  skos:definition   "Primary sounding range in the mezzo-soprano register (approximately A4–C6)."@en ;
+  skos:topConceptOf mi:scheme-range ;
+  skos:inScheme     mi:scheme-range .
+
+mi_range:alto a skos:Concept ;
+  skos:prefLabel    "Alto"@en ;
+  skos:altLabel     "Alto"@es ;
+  skos:definition   "Primary sounding range in the alto register (approximately E3–F5)."@en ;
+  skos:topConceptOf mi:scheme-range ;
+  skos:inScheme     mi:scheme-range .
+
+mi_range:tenor a skos:Concept ;
+  skos:prefLabel    "Tenor"@en ;
+  skos:altLabel     "Tenor"@es ;
+  skos:definition   "Primary sounding range in the tenor register (approximately C2–C5)."@en ;
+  skos:topConceptOf mi:scheme-range ;
+  skos:inScheme     mi:scheme-range .
+
+mi_range:bass a skos:Concept ;
+  skos:prefLabel    "Bass"@en ;
+  skos:altLabel     "Bajo"@es ;
+  skos:definition   "Primary sounding range in the bass register (approximately C1–E3)."@en ;
+  skos:topConceptOf mi:scheme-range ;
+  skos:inScheme     mi:scheme-range .
+
+mi_range:wide-range a skos:Concept ;
+  skos:prefLabel    "Wide range"@en ;
+  skos:altLabel     "Rango amplio"@es ;
+  skos:definition   "Instruments spanning three or more octaves, not reducible to a single register."@en ;
+  skos:topConceptOf mi:scheme-range ;
+  skos:inScheme     mi:scheme-range .
+
+mi_range:unpitched a skos:Concept ;
+  skos:prefLabel    "Unpitched"@en ;
+  skos:altLabel     "Sin altura definida"@es ;
+  skos:definition   "Instruments producing sound of indefinite or non-discrete pitch."@en ;
+  skos:topConceptOf mi:scheme-range ;
+  skos:inScheme     mi:scheme-range .
+
+
+#################################################################
+# SCHEME 3 — PERIOD
+# Flat — historical periods are ordered chronologically but that
+# order carries no SKOS-semantic weight; no skos:broader used.
+# OWL migration: owl:NamedIndividual + owl:ObjectProperty mi:hasPeriod.
+#################################################################
+
+mi:scheme-period a skos:ConceptScheme ;
+  skos:prefLabel   "Historical period"@en ;
+  skos:altLabel    "Período histórico"@es ;
+  skos:definition  "Classifies instruments by the historical period of their canonical form's emergence. Flat — no hierarchy among periods."@en ;
+  skos:hasTopConcept
+    mi_period:ancient ,
+    mi_period:medieval ,
+    mi_period:renaissance ,
+    mi_period:baroque ,
+    mi_period:classical-era ,
+    mi_period:romantic ,
+    mi_period:modern ,
+    mi_period:contemporary
+  .
+
+mi_period:ancient a skos:Concept ;
+  skos:prefLabel    "Ancient"@en ;
+  skos:altLabel     "Antiguo"@es ;
+  skos:definition   "Instruments whose canonical form originated in antiquity (before c. 500 CE)."@en ;
+  skos:topConceptOf mi:scheme-period ;
+  skos:inScheme     mi:scheme-period .
+
+mi_period:medieval a skos:Concept ;
+  skos:prefLabel    "Medieval"@en ;
+  skos:altLabel     "Medieval"@es ;
+  skos:definition   "Instruments whose canonical form emerged during the medieval period (c. 500–1400)."@en ;
+  skos:topConceptOf mi:scheme-period ;
+  skos:inScheme     mi:scheme-period .
+
+mi_period:renaissance a skos:Concept ;
+  skos:prefLabel    "Renaissance"@en ;
+  skos:altLabel     "Renacimiento"@es ;
+  skos:definition   "Instruments whose canonical form emerged or was codified during the Renaissance (c. 1400–1600)."@en ;
+  skos:topConceptOf mi:scheme-period ;
+  skos:inScheme     mi:scheme-period .
+
+mi_period:baroque a skos:Concept ;
+  skos:prefLabel    "Baroque"@en ;
+  skos:altLabel     "Barroco"@es ;
+  skos:definition   "Instruments whose canonical form emerged or was primary during the Baroque era (c. 1600–1750)."@en ;
+  skos:topConceptOf mi:scheme-period ;
+  skos:inScheme     mi:scheme-period .
+
+mi_period:classical-era a skos:Concept ;
+  skos:prefLabel    "Classical era"@en ;
+  skos:altLabel     "Período clásico"@es ;
+  skos:definition   "Instruments whose canonical form was established during the Classical era (c. 1750–1820)."@en ;
+  skos:topConceptOf mi:scheme-period ;
+  skos:inScheme     mi:scheme-period .
+
+mi_period:romantic a skos:Concept ;
+  skos:prefLabel    "Romantic"@en ;
+  skos:altLabel     "Romántico"@es ;
+  skos:definition   "Instruments whose canonical or modern form was established during the Romantic era (c. 1820–1900)."@en ;
+  skos:topConceptOf mi:scheme-period ;
+  skos:inScheme     mi:scheme-period .
+
+mi_period:modern a skos:Concept ;
+  skos:prefLabel    "Modern"@en ;
+  skos:altLabel     "Moderno"@es ;
+  skos:definition   "Instruments whose canonical form or widespread adoption occurred roughly 1900–1945."@en ;
+  skos:topConceptOf mi:scheme-period ;
+  skos:inScheme     mi:scheme-period .
+
+mi_period:contemporary a skos:Concept ;
+  skos:prefLabel    "Contemporary"@en ;
+  skos:altLabel     "Contemporáneo"@es ;
+  skos:definition   "Instruments invented or whose canonical form became established after 1945."@en ;
+  skos:topConceptOf mi:scheme-period ;
+  skos:inScheme     mi:scheme-period .
+
+
+#################################################################
+# SCHEME 4 — REGION
+# Flat — cultural/geographic traditions.
+# OWL migration: owl:NamedIndividual + owl:ObjectProperty mi:hasRegion.
+#################################################################
+
+mi:scheme-region a skos:ConceptScheme ;
+  skos:prefLabel   "Cultural / geographic region"@en ;
+  skos:altLabel    "Región cultural / geográfica"@es ;
+  skos:definition  "Classifies instruments by their primary cultural or geographic tradition of origin. Flat — no hierarchy among values."@en ;
+  skos:hasTopConcept
+    mi_region:western-art-music ,
+    mi_region:latin-american ,
+    mi_region:african ,
+    mi_region:east-asian ,
+    mi_region:pan-cultural
+  .
+
+mi_region:western-art-music a skos:Concept ;
+  skos:prefLabel    "Western art music"@en ;
+  skos:altLabel     "Música artística occidental"@es ;
+  skos:definition   "Instruments central to the European classical music tradition and its concert practice."@en ;
+  skos:topConceptOf mi:scheme-region ;
+  skos:inScheme     mi:scheme-region .
+
+mi_region:latin-american a skos:Concept ;
+  skos:prefLabel    "Latin American"@en ;
+  skos:altLabel     "Latinoamericano"@es ;
+  skos:definition   "Instruments with significant origin or canonical development in Latin American traditions."@en ;
+  skos:topConceptOf mi:scheme-region ;
+  skos:inScheme     mi:scheme-region .
+
+mi_region:african a skos:Concept ;
+  skos:prefLabel    "African"@en ;
+  skos:altLabel     "Africano"@es ;
+  skos:definition   "Instruments with significant origin in African musical traditions."@en ;
+  skos:topConceptOf mi:scheme-region ;
+  skos:inScheme     mi:scheme-region .
+
+mi_region:east-asian a skos:Concept ;
+  skos:prefLabel    "East Asian"@en ;
+  skos:altLabel     "Asia oriental"@es ;
+  skos:definition   "Instruments with significant origin or canonical form in East Asian musical traditions."@en ;
+  skos:topConceptOf mi:scheme-region ;
+  skos:inScheme     mi:scheme-region .
+
+mi_region:pan-cultural a skos:Concept ;
+  skos:prefLabel    "Pan-cultural"@en ;
+  skos:altLabel     "Transcultural"@es ;
+  skos:definition   "Instruments not identified with a single tradition, or adopted globally across many traditions."@en ;
+  skos:topConceptOf mi:scheme-region ;
+  skos:inScheme     mi:scheme-region .
+
+
+#################################################################
+# SCHEME 5 — PRODUCTION MECHANISM
+# Flat — fine-grained organological mechanism, orthogonal to family.
+# OWL migration: owl:NamedIndividual + owl:ObjectProperty mi:hasProduction.
+#################################################################
+
+mi:scheme-production a skos:ConceptScheme ;
+  skos:prefLabel   "Sound production mechanism"@en ;
+  skos:altLabel    "Mecanismo de producción sonora"@es ;
+  skos:definition  "Classifies instruments by their primary physical sound-generation mechanism. Flat — no hierarchy among values."@en ;
+  skos:hasTopConcept
+    mi_prod:bowed-string ,
+    mi_prod:plucked-string ,
+    mi_prod:struck-string ,
+    mi_prod:edge-tone ,
+    mi_prod:single-reed ,
+    mi_prod:lip-reed ,
+    mi_prod:struck-membrane ,
+    mi_prod:struck-bar ,
+    mi_prod:pipe-air-column ,
+    mi_prod:free-reed ,
+    mi_prod:tonewheel-em ,
+    mi_prod:electromagnetic-pickup ,
+    mi_prod:voltage-controlled ,
+    mi_prod:fm-synthesis ,
+    mi_prod:wavetable-playback
+  .
+
+mi_prod:bowed-string a skos:Concept ;
+  skos:prefLabel    "Bowed string"@en ;
+  skos:altLabel     "Cuerda frotada"@es ;
+  skos:definition   "Sound produced by drawing a resined bow across strings, exciting sustained vibration."@en ;
+  skos:topConceptOf mi:scheme-production ;
+  skos:inScheme     mi:scheme-production .
+
+mi_prod:plucked-string a skos:Concept ;
+  skos:prefLabel    "Plucked string"@en ;
+  skos:altLabel     "Cuerda pulsada"@es ;
+  skos:definition   "Sound produced by displacing a string laterally with fingers or a plectrum and releasing it."@en ;
+  skos:topConceptOf mi:scheme-production ;
+  skos:inScheme     mi:scheme-production .
+
+mi_prod:struck-string a skos:Concept ;
+  skos:prefLabel    "Struck string"@en ;
+  skos:altLabel     "Cuerda percutida"@es ;
+  skos:definition   "Sound produced by a hammer striking a string, setting it into transverse vibration."@en ;
+  skos:topConceptOf mi:scheme-production ;
+  skos:inScheme     mi:scheme-production .
+
+mi_prod:edge-tone a skos:Concept ;
+  skos:prefLabel    "Edge tone"@en ;
+  skos:altLabel     "Bisel"@es ;
+  skos:definition   "Sound produced by splitting an air stream across a sharp edge, generating an oscillating vortex."@en ;
+  skos:topConceptOf mi:scheme-production ;
+  skos:inScheme     mi:scheme-production .
+
+mi_prod:single-reed a skos:Concept ;
+  skos:prefLabel    "Single reed"@en ;
+  skos:altLabel     "Lengüeta simple"@es ;
+  skos:definition   "Sound produced by a single cane or synthetic reed beating against a mouthpiece table."@en ;
+  skos:topConceptOf mi:scheme-production ;
+  skos:inScheme     mi:scheme-production .
+
+mi_prod:lip-reed a skos:Concept ;
+  skos:prefLabel    "Lip reed"@en ;
+  skos:altLabel     "Embocadura de labios"@es ;
+  skos:definition   "Sound produced by the player's lips vibrating in a cup- or funnel-shaped mouthpiece."@en ;
+  skos:topConceptOf mi:scheme-production ;
+  skos:inScheme     mi:scheme-production .
+
+mi_prod:struck-membrane a skos:Concept ;
+  skos:prefLabel    "Struck membrane"@en ;
+  skos:altLabel     "Membrana percutida"@es ;
+  skos:definition   "Sound produced by striking a taut membrane which radiates sound as it vibrates."@en ;
+  skos:topConceptOf mi:scheme-production ;
+  skos:inScheme     mi:scheme-production .
+
+mi_prod:struck-bar a skos:Concept ;
+  skos:prefLabel    "Struck bar / plate"@en ;
+  skos:altLabel     "Barra o placa percutida"@es ;
+  skos:definition   "Sound produced by striking a solid bar, plate, or disc which vibrates as an idiophone."@en ;
+  skos:topConceptOf mi:scheme-production ;
+  skos:inScheme     mi:scheme-production .
+
+mi_prod:pipe-air-column a skos:Concept ;
+  skos:prefLabel    "Pipe air-column resonance"@en ;
+  skos:altLabel     "Resonancia en columna de aire"@es ;
+  skos:definition   "Sound produced by air pressure exciting resonance in a pipe; pitch determined by pipe length and shape."@en ;
+  skos:topConceptOf mi:scheme-production ;
+  skos:inScheme     mi:scheme-production .
+
+mi_prod:free-reed a skos:Concept ;
+  skos:prefLabel    "Free reed"@en ;
+  skos:altLabel     "Lengüeta libre"@es ;
+  skos:definition   "Sound produced by a metal tongue vibrating freely through a frame when air passes over it."@en ;
+  skos:topConceptOf mi:scheme-production ;
+  skos:inScheme     mi:scheme-production .
+
+mi_prod:tonewheel-em a skos:Concept ;
+  skos:prefLabel    "Tonewheel electromechanical"@en ;
+  skos:altLabel     "Rueda de tono electromecánica"@es ;
+  skos:definition   "Sound produced by rotating metal tonewheels inducing alternating current in electromagnetic pickups."@en ;
+  skos:topConceptOf mi:scheme-production ;
+  skos:inScheme     mi:scheme-production .
+
+mi_prod:electromagnetic-pickup a skos:Concept ;
+  skos:prefLabel    "Electromagnetic pickup"@en ;
+  skos:altLabel     "Pastilla electromagnética"@es ;
+  skos:definition   "Sound produced by a vibrating ferromagnetic string disturbing the magnetic field of a pickup coil."@en ;
+  skos:topConceptOf mi:scheme-production ;
+  skos:inScheme     mi:scheme-production .
+
+mi_prod:voltage-controlled a skos:Concept ;
+  skos:prefLabel    "Voltage-controlled analogue synthesis"@en ;
+  skos:altLabel     "Síntesis analógica por voltaje"@es ;
+  skos:definition   "Sound generated entirely by analogue circuits: VCO, VCF, and VCA."@en ;
+  skos:topConceptOf mi:scheme-production ;
+  skos:inScheme     mi:scheme-production .
+
+mi_prod:fm-synthesis a skos:Concept ;
+  skos:prefLabel    "Frequency modulation synthesis"@en ;
+  skos:altLabel     "Síntesis por modulación de frecuencia"@es ;
+  skos:definition   "Sound generated by using one oscillator (modulator) to modulate the frequency of another (carrier)."@en ;
+  skos:topConceptOf mi:scheme-production ;
+  skos:inScheme     mi:scheme-production .
+
+mi_prod:wavetable-playback a skos:Concept ;
+  skos:prefLabel    "Wavetable playback"@en ;
+  skos:altLabel     "Reproducción de tabla de ondas"@es ;
+  skos:definition   "Sound generated by reading through stored digital waveform tables in a loop."@en ;
+  skos:topConceptOf mi:scheme-production ;
+  skos:inScheme     mi:scheme-production .
+
+
+#################################################################
+# FACET ASSIGNMENTS
+# mi:hasRange / mi:hasPeriod / mi:hasRegion / mi:hasProduction
+# attached directly to each instrument concept in mi:scheme-family.
+# An instrument may have multiple values per facet property
+# (e.g. multiple periods, multiple regions) — this is intentional
+# and maps cleanly to OWL ObjectProperty assertions later.
+#################################################################
+
+# ── Violin ──────────────────────────────────────────────────────
+mi_fm:violin
+  mi:hasRange      mi_range:mezzo-soprano ;
+  mi:hasPeriod     mi_period:baroque , mi_period:romantic ;
+  mi:hasRegion     mi_region:western-art-music ;
+  mi:hasProduction mi_prod:bowed-string .
+
+mi_fm:baroque-violin
+  mi:hasRange      mi_range:mezzo-soprano ;
+  mi:hasPeriod     mi_period:baroque ;
+  mi:hasRegion     mi_region:western-art-music ;
+  mi:hasProduction mi_prod:bowed-string .
+
+mi_fm:electric-violin
+  mi:hasRange      mi_range:mezzo-soprano ;
+  mi:hasPeriod     mi_period:contemporary ;
+  mi:hasRegion     mi_region:pan-cultural ;
+  mi:hasProduction mi_prod:bowed-string , mi_prod:electromagnetic-pickup .
+
+mi_fm:five-string-violin
+  mi:hasRange      mi_range:mezzo-soprano , mi_range:alto ;
+  mi:hasPeriod     mi_period:contemporary ;
+  mi:hasRegion     mi_region:western-art-music ;
+  mi:hasProduction mi_prod:bowed-string .
+
+# ── Guitar ──────────────────────────────────────────────────────
+mi_fm:guitar
+  mi:hasRange      mi_range:wide-range ;
+  mi:hasPeriod     mi_period:renaissance ;
+  mi:hasRegion     mi_region:western-art-music , mi_region:latin-american ;
+  mi:hasProduction mi_prod:plucked-string .
+
+mi_fm:classical-guitar
+  mi:hasRange      mi_range:wide-range ;
+  mi:hasPeriod     mi_period:romantic ;
+  mi:hasRegion     mi_region:western-art-music , mi_region:latin-american ;
+  mi:hasProduction mi_prod:plucked-string .
+
+mi_fm:steel-string-acoustic-guitar
+  mi:hasRange      mi_range:wide-range ;
+  mi:hasPeriod     mi_period:romantic ;
+  mi:hasRegion     mi_region:western-art-music , mi_region:pan-cultural ;
+  mi:hasProduction mi_prod:plucked-string .
+
+mi_fm:electric-guitar
+  mi:hasRange      mi_range:wide-range ;
+  mi:hasPeriod     mi_period:contemporary ;
+  mi:hasRegion     mi_region:pan-cultural ;
+  mi:hasProduction mi_prod:plucked-string , mi_prod:electromagnetic-pickup .
+
+# ── Flute ───────────────────────────────────────────────────────
+mi_fm:flute
+  mi:hasRange      mi_range:mezzo-soprano ;
+  mi:hasPeriod     mi_period:baroque ;
+  mi:hasRegion     mi_region:western-art-music ;
+  mi:hasProduction mi_prod:edge-tone .
+
+mi_fm:concert-flute
+  mi:hasRange      mi_range:mezzo-soprano ;
+  mi:hasPeriod     mi_period:romantic ;
+  mi:hasRegion     mi_region:western-art-music ;
+  mi:hasProduction mi_prod:edge-tone .
+
+mi_fm:alto-flute
+  mi:hasRange      mi_range:alto ;
+  mi:hasPeriod     mi_period:romantic ;
+  mi:hasRegion     mi_region:western-art-music ;
+  mi:hasProduction mi_prod:edge-tone .
+
+mi_fm:piccolo
+  mi:hasRange      mi_range:soprano ;
+  mi:hasPeriod     mi_period:romantic ;
+  mi:hasRegion     mi_region:western-art-music ;
+  mi:hasProduction mi_prod:edge-tone .
+
+# ── Clarinet ────────────────────────────────────────────────────
+mi_fm:clarinet
+  mi:hasRange      mi_range:mezzo-soprano , mi_range:alto ;
+  mi:hasPeriod     mi_period:classical-era ;
+  mi:hasRegion     mi_region:western-art-music ;
+  mi:hasProduction mi_prod:single-reed .
+
+mi_fm:b-flat-clarinet
+  mi:hasRange      mi_range:mezzo-soprano ;
+  mi:hasPeriod     mi_period:classical-era ;
+  mi:hasRegion     mi_region:western-art-music ;
+  mi:hasProduction mi_prod:single-reed .
+
+mi_fm:a-clarinet
+  mi:hasRange      mi_range:mezzo-soprano , mi_range:alto ;
+  mi:hasPeriod     mi_period:classical-era ;
+  mi:hasRegion     mi_region:western-art-music ;
+  mi:hasProduction mi_prod:single-reed .
+
+mi_fm:bass-clarinet
+  mi:hasRange      mi_range:alto , mi_range:bass ;
+  mi:hasPeriod     mi_period:romantic ;
+  mi:hasRegion     mi_region:western-art-music ;
+  mi:hasProduction mi_prod:single-reed .
+
+# ── Trumpet ─────────────────────────────────────────────────────
+mi_fm:trumpet
+  mi:hasRange      mi_range:mezzo-soprano ;
+  mi:hasPeriod     mi_period:baroque ;
+  mi:hasRegion     mi_region:western-art-music ;
+  mi:hasProduction mi_prod:lip-reed .
+
+mi_fm:b-flat-trumpet
+  mi:hasRange      mi_range:mezzo-soprano ;
+  mi:hasPeriod     mi_period:classical-era ;
+  mi:hasRegion     mi_region:western-art-music ;
+  mi:hasProduction mi_prod:lip-reed .
+
+mi_fm:c-trumpet
+  mi:hasRange      mi_range:mezzo-soprano , mi_range:tenor ;
+  mi:hasPeriod     mi_period:classical-era ;
+  mi:hasRegion     mi_region:western-art-music ;
+  mi:hasProduction mi_prod:lip-reed .
+
+mi_fm:piccolo-trumpet
+  mi:hasRange      mi_range:soprano ;
+  mi:hasPeriod     mi_period:romantic ;
+  mi:hasRegion     mi_region:western-art-music ;
+  mi:hasProduction mi_prod:lip-reed .
+
+# ── Snare drum ──────────────────────────────────────────────────
+mi_fm:snare-drum
+  mi:hasRange      mi_range:unpitched ;
+  mi:hasPeriod     mi_period:romantic ;
+  mi:hasRegion     mi_region:western-art-music ;
+  mi:hasProduction mi_prod:struck-membrane .
+
+mi_fm:orchestral-snare-drum
+  mi:hasRange      mi_range:unpitched ;
+  mi:hasPeriod     mi_period:romantic ;
+  mi:hasRegion     mi_region:western-art-music ;
+  mi:hasProduction mi_prod:struck-membrane .
+
+mi_fm:marching-snare-drum
+  mi:hasRange      mi_range:unpitched ;
+  mi:hasPeriod     mi_period:romantic ;
+  mi:hasRegion     mi_region:western-art-music ;
+  mi:hasProduction mi_prod:struck-membrane .
+
+mi_fm:piccolo-snare-drum
+  mi:hasRange      mi_range:unpitched ;
+  mi:hasPeriod     mi_period:modern ;
+  mi:hasRegion     mi_region:western-art-music ;
+  mi:hasProduction mi_prod:struck-membrane .
+
+# ── Marimba ─────────────────────────────────────────────────────
+mi_fm:marimba
+  mi:hasRange      mi_range:wide-range ;
+  mi:hasPeriod     mi_period:romantic ;
+  mi:hasRegion     mi_region:latin-american , mi_region:african ;
+  mi:hasProduction mi_prod:struck-bar .
+
+mi_fm:four-octave-marimba
+  mi:hasRange      mi_range:wide-range ;
+  mi:hasPeriod     mi_period:modern ;
+  mi:hasRegion     mi_region:western-art-music , mi_region:latin-american ;
+  mi:hasProduction mi_prod:struck-bar .
+
+mi_fm:five-octave-marimba
+  mi:hasRange      mi_range:wide-range ;
+  mi:hasPeriod     mi_period:modern ;
+  mi:hasRegion     mi_region:western-art-music ;
+  mi:hasProduction mi_prod:struck-bar .
+
+mi_fm:concert-marimba
+  mi:hasRange      mi_range:wide-range ;
+  mi:hasPeriod     mi_period:modern ;
+  mi:hasRegion     mi_region:western-art-music ;
+  mi:hasProduction mi_prod:struck-bar .
+
+# ── Cymbal ──────────────────────────────────────────────────────
+mi_fm:cymbal
+  mi:hasRange      mi_range:unpitched ;
+  mi:hasPeriod     mi_period:ancient ;
+  mi:hasRegion     mi_region:western-art-music , mi_region:african ;
+  mi:hasProduction mi_prod:struck-bar .
+
+mi_fm:crash-cymbal
+  mi:hasRange      mi_range:unpitched ;
+  mi:hasPeriod     mi_period:modern ;
+  mi:hasRegion     mi_region:western-art-music ;
+  mi:hasProduction mi_prod:struck-bar .
+
+mi_fm:ride-cymbal
+  mi:hasRange      mi_range:unpitched ;
+  mi:hasPeriod     mi_period:modern ;
+  mi:hasRegion     mi_region:western-art-music ;
+  mi:hasProduction mi_prod:struck-bar .
+
+mi_fm:hi-hat-cymbals
+  mi:hasRange      mi_range:unpitched ;
+  mi:hasPeriod     mi_period:modern ;
+  mi:hasRegion     mi_region:western-art-music ;
+  mi:hasProduction mi_prod:struck-bar .
+
+# ── Piano ───────────────────────────────────────────────────────
+mi_fm:piano
+  mi:hasRange      mi_range:wide-range ;
+  mi:hasPeriod     mi_period:classical-era ;
+  mi:hasRegion     mi_region:western-art-music ;
+  mi:hasProduction mi_prod:struck-string .
+
+mi_fm:grand-piano
+  mi:hasRange      mi_range:wide-range ;
+  mi:hasPeriod     mi_period:romantic ;
+  mi:hasRegion     mi_region:western-art-music ;
+  mi:hasProduction mi_prod:struck-string .
+
+mi_fm:upright-piano
+  mi:hasRange      mi_range:wide-range ;
+  mi:hasPeriod     mi_period:romantic ;
+  mi:hasRegion     mi_region:western-art-music ;
+  mi:hasProduction mi_prod:struck-string .
+
+mi_fm:prepared-piano
+  mi:hasRange      mi_range:wide-range ;
+  mi:hasPeriod     mi_period:modern ;
+  mi:hasRegion     mi_region:western-art-music ;
+  mi:hasProduction mi_prod:struck-string .
+
+# ── Organ ───────────────────────────────────────────────────────
+mi_fm:organ
+  mi:hasRange      mi_range:wide-range ;
+  mi:hasPeriod     mi_period:medieval ;
+  mi:hasRegion     mi_region:western-art-music ;
+  mi:hasProduction mi_prod:pipe-air-column .
+
+mi_fm:pipe-organ
+  mi:hasRange      mi_range:wide-range ;
+  mi:hasPeriod     mi_period:baroque ;
+  mi:hasRegion     mi_region:western-art-music ;
+  mi:hasProduction mi_prod:pipe-air-column .
+
+mi_fm:reed-organ
+  mi:hasRange      mi_range:wide-range ;
+  mi:hasPeriod     mi_period:romantic ;
+  mi:hasRegion     mi_region:western-art-music ;
+  mi:hasProduction mi_prod:free-reed .
+
+mi_fm:hammond-organ
+  mi:hasRange      mi_range:wide-range ;
+  mi:hasPeriod     mi_period:modern ;
+  mi:hasRegion     mi_region:pan-cultural ;
+  mi:hasProduction mi_prod:tonewheel-em .
+
+# ── Synthesizer ─────────────────────────────────────────────────
+mi_fm:synthesizer
+  mi:hasRange      mi_range:wide-range ;
+  mi:hasPeriod     mi_period:contemporary ;
+  mi:hasRegion     mi_region:pan-cultural ;
+  mi:hasProduction mi_prod:voltage-controlled , mi_prod:fm-synthesis , mi_prod:wavetable-playback .
+
+mi_fm:analog-synthesizer
+  mi:hasRange      mi_range:wide-range ;
+  mi:hasPeriod     mi_period:contemporary ;
+  mi:hasRegion     mi_region:pan-cultural ;
+  mi:hasProduction mi_prod:voltage-controlled .
+
+mi_fm:fm-synthesizer
+  mi:hasRange      mi_range:wide-range ;
+  mi:hasPeriod     mi_period:contemporary ;
+  mi:hasRegion     mi_region:pan-cultural ;
+  mi:hasProduction mi_prod:fm-synthesis .
+
+mi_fm:wavetable-synthesizer
+  mi:hasRange      mi_range:wide-range ;
+  mi:hasPeriod     mi_period:contemporary ;
+  mi:hasRegion     mi_region:east-asian , mi_region:pan-cultural ;
+  mi:hasProduction mi_prod:wavetable-playback .
