@@ -1,0 +1,49 @@
+
+# One 
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?instrument ?instrumentLabel ?family
+WHERE {
+  ?instrument rdfs:label ?instrumentLabel .
+  ?instrument rdf:type   ?family .
+}
+
+# Two
+
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX mi:   <http://mymusicalinstruments.org/>
+
+SELECT ?family
+WHERE {
+        ?family     skos:inScheme  mi:scheme-family .
+}
+
+# Three
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX mi:   <http://mymusicalinstruments.org/>
+
+SELECT ?family
+WHERE {
+        ?family     skos:topConceptOf  mi:scheme-family .
+}
+
+# Four
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX mi:   <http://mymusicalinstruments.org/>
+
+SELECT ?instrument ?instrumentLabel ?familyLabel
+WHERE {
+  ?instrument rdfs:label       ?instrumentLabel .
+  ?instrument mi:madeOf                   ?familyLabel .
+}
+
+# Five
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX mi:   <http://mymusicalinstruments.org/>
+
+SELECT ?instrument ?instrumentLabel ?soundproduction
+WHERE {
+  ?instrument rdfs:label       ?instrumentLabel .
+  ?instrument mi:hasProduction ?soundproduction .
+}
