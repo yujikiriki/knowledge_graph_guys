@@ -1,0 +1,1168 @@
+@prefix rdf:        <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:       <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:        <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:        <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:       <http://www.w3.org/2004/02/skos/core#> .
+@prefix prov:       <http://www.w3.org/ns/prov#> .
+@prefix oa:         <http://www.w3.org/ns/oa#> .
+@prefix mi:         <http://mymusicalinstruments.org/> .
+@prefix instrument: <http://mymusicalinstruments.org/data/instrument/> .
+@prefix material:   <http://mymusicalinstruments.org/data/body_material/> .
+@prefix mechanism:  <http://mymusicalinstruments.org/data/sound_mechanism/> .
+@prefix genre:      <http://mymusicalinstruments.org/data/genre/> .
+@prefix tuning:     <http://mymusicalinstruments.org/data/tuning/> .
+
+
+# ===============================================================
+# Provenance — Extraction Activity
+# ===============================================================
+
+<urn:extraction:violin-wikipedia-mode2> a prov:Activity ;
+    rdfs:label "Mode 2 extraction from Wikipedia Violin article"@en ;
+    prov:used <https://en.wikipedia.org/wiki/Violin> ;
+    prov:wasAssociatedWith <urn:agent:claude-data-extractor> .
+
+<https://en.wikipedia.org/wiki/Violin> a prov:Entity ;
+    rdfs:label "Wikipedia - Violin"@en .
+
+
+# ===============================================================
+# Sound Mechanisms
+# ===============================================================
+
+
+mechanism:piezoelectric-pickup a mi:ElectricSound ;
+    rdfs:label "Piezoelectric pickup"@en ;
+    rdfs:comment "Converts string vibration to an electric signal."@en ;
+    prov:wasDerivedFrom _:prov001 .
+
+
+mechanism:magnetic-pickup a mi:ElectricSound ;
+    rdfs:label "Magnetic pickup"@en ;
+    rdfs:comment "Magnetic device that converts string vibration to an electric signal."@en ;
+    prov:wasDerivedFrom _:prov002 .
+
+
+# ===============================================================
+# Body Materials
+# ===============================================================
+
+
+material:spruce a mi:BodyMaterial ;
+    rdfs:label "Spruce"@en ;
+    rdfs:comment "Softwood used for violin soundboards (top plates)."@en ;
+    prov:wasDerivedFrom _:prov003 .
+
+
+material:norway-spruce a mi:BodyMaterial ;
+    rdfs:label "Norway spruce"@en ;
+    rdfs:comment "Picea abies; the preferred species for violin tops."@en ;
+    prov:wasDerivedFrom _:prov004 .
+
+
+material:maple a mi:BodyMaterial ;
+    rdfs:label "Maple"@en ;
+    rdfs:comment "Hardwood used for violin ribs, back, neck, and bridge."@en ;
+    prov:wasDerivedFrom _:prov005 .
+
+
+material:ebony a mi:BodyMaterial ;
+    rdfs:label "Ebony"@en ;
+    rdfs:comment "Dense hardwood used for fingerboards due to hardness and wear resistance."@en ;
+    prov:wasDerivedFrom _:prov006 .
+
+
+material:gut a mi:BodyMaterial ;
+    rdfs:label "Gut"@en ;
+    rdfs:comment "Animal intestine material historically used for violin strings."@en ;
+    prov:wasDerivedFrom _:prov007 .
+
+
+material:catgut a mi:BodyMaterial ;
+    rdfs:label "Catgut"@en ;
+    rdfs:comment "Common name for gut strings (not actually from cats)."@en ;
+    prov:wasDerivedFrom _:prov008 .
+
+
+material:perlon a mi:BodyMaterial ;
+    rdfs:label "Perlon"@en ;
+    rdfs:comment "Synthetic material used for modern violin strings."@en ;
+    prov:wasDerivedFrom _:prov009 .
+
+
+material:steel a mi:BodyMaterial ;
+    rdfs:label "Steel"@en ;
+    rdfs:comment "Metal used for modern violin strings."@en ;
+    prov:wasDerivedFrom _:prov010 .
+
+
+material:silver a mi:BodyMaterial ;
+    rdfs:label "Silver"@en ;
+    rdfs:comment "Precious metal sometimes used for string plating and bow windings."@en ;
+    prov:wasDerivedFrom _:prov011 .
+
+
+material:horsehair a mi:BodyMaterial ;
+    rdfs:label "Horsehair"@en ;
+    rdfs:comment "Hair from horse tail, used for violin bow hair."@en ;
+    prov:wasDerivedFrom _:prov012 .
+
+
+material:snakewood a mi:BodyMaterial ;
+    rdfs:label "Snakewood"@en ;
+    rdfs:comment "Dense tropical wood used for high-quality bow sticks."@en ;
+    prov:wasDerivedFrom _:prov013 .
+
+
+material:brazilwood a mi:BodyMaterial ;
+    rdfs:label "Brazilwood"@en ;
+    rdfs:comment "Tropical wood used for bow sticks, also known as Pernambuco wood."@en ;
+    prov:wasDerivedFrom _:prov014 .
+
+
+material:pernambuco-wood a mi:BodyMaterial ;
+    rdfs:label "Pernambuco wood"@en ;
+    rdfs:comment "Premium bow stick material, same species as brazilwood."@en ;
+    prov:wasDerivedFrom _:prov015 .
+
+
+material:carbon-fiber a mi:BodyMaterial ;
+    rdfs:label "Carbon fiber"@en ;
+    rdfs:comment "Modern composite material used for bow sticks."@en ;
+    prov:wasDerivedFrom _:prov016 .
+
+
+material:fiberglass a mi:BodyMaterial ;
+    rdfs:label "Fiberglass"@en ;
+    rdfs:comment "Inexpensive composite used for student bow sticks."@en ;
+    prov:wasDerivedFrom _:prov017 .
+
+
+material:rosin a mi:BodyMaterial ;
+    rdfs:label "Rosin"@en ;
+    rdfs:comment "Solid tree resin rubbed on bow hair to increase friction."@en ;
+    prov:wasDerivedFrom _:prov018 .
+
+
+material:animal-hide-glue a mi:BodyMaterial ;
+    rdfs:label "Animal hide glue"@en ;
+    rdfs:comment "Traditional adhesive used in violin construction joints."@en ;
+    prov:wasDerivedFrom _:prov019 .
+
+
+material:wood a mi:BodyMaterial ;
+    rdfs:label "Wood"@en ;
+    rdfs:comment "General wood material for the violin body."@en ;
+    prov:wasDerivedFrom _:prov020 .
+
+
+material:spruce-and-maple a mi:BodyMaterial ;
+    rdfs:label "Spruce and maple"@en ;
+    rdfs:comment "Composite: spruce top with maple back and ribs — standard violin construction."@en ;
+    prov:wasDerivedFrom _:prov021 , _:prov022 .
+
+
+# ===============================================================
+# Genres (SKOS Concepts)
+# ===============================================================
+
+
+genre:classical a skos:Concept ;
+    skos:prefLabel "Western classical music"@en ;
+    prov:wasDerivedFrom _:prov023 .
+
+
+genre:folk a skos:Concept ;
+    skos:prefLabel "Folk music"@en ;
+    prov:wasDerivedFrom _:prov024 .
+
+
+genre:country a skos:Concept ;
+    skos:prefLabel "Country music"@en ;
+    prov:wasDerivedFrom _:prov025 .
+
+
+genre:bluegrass a skos:Concept ;
+    skos:prefLabel "Bluegrass music"@en ;
+    prov:wasDerivedFrom _:prov026 .
+
+
+genre:jazz a skos:Concept ;
+    skos:prefLabel "Jazz"@en ;
+    prov:wasDerivedFrom _:prov027 .
+
+
+genre:jazz-fusion a skos:Concept ;
+    skos:prefLabel "Jazz fusion"@en ;
+    prov:wasDerivedFrom _:prov028 .
+
+
+genre:rock a skos:Concept ;
+    skos:prefLabel "Rock music"@en ;
+    prov:wasDerivedFrom _:prov029 .
+
+
+genre:progressive-rock a skos:Concept ;
+    skos:prefLabel "Progressive rock"@en ;
+    prov:wasDerivedFrom _:prov030 .
+
+
+genre:indian-classical a skos:Concept ;
+    skos:prefLabel "Indian classical music"@en ;
+    prov:wasDerivedFrom _:prov031 .
+
+
+genre:iranian-classical a skos:Concept ;
+    skos:prefLabel "Iranian classical music"@en ;
+    prov:wasDerivedFrom _:prov032 .
+
+
+genre:arabic-classical a skos:Concept ;
+    skos:prefLabel "Arabic classical music"@en ;
+    prov:wasDerivedFrom _:prov033 .
+
+
+genre:popular a skos:Concept ;
+    skos:prefLabel "Popular music"@en ;
+    prov:wasDerivedFrom _:prov034 .
+
+
+genre:baroque a skos:Concept ;
+    skos:prefLabel "Baroque music"@en ;
+    prov:wasDerivedFrom _:prov035 .
+
+
+genre:soul a skos:Concept ;
+    skos:prefLabel "Soul music"@en ;
+    prov:wasDerivedFrom _:prov036 .
+
+
+genre:swing a skos:Concept ;
+    skos:prefLabel "Swing music"@en ;
+    prov:wasDerivedFrom _:prov037 .
+
+
+# ===============================================================
+# Tunings / Scales (SKOS Concepts)
+# ===============================================================
+
+
+tuning:standard-gdae a skos:Concept ;
+    skos:prefLabel "Standard tuning G-D-A-E"@en ;
+    rdfs:comment "Standard violin tuning in perfect fifths: G3-D4-A4-E5."@en ;
+    prov:wasDerivedFrom _:prov038 .
+
+
+tuning:south-indian a skos:Concept ;
+    skos:prefLabel "South Indian tuning D#-A#-D#-A#"@en ;
+    rdfs:comment "Sa-Pa-Sa-Pa tuning used in South Indian (Carnatic) violin."@en ;
+    prov:wasDerivedFrom _:prov039 .
+
+
+tuning:north-indian-hindustani a skos:Concept ;
+    skos:prefLabel "North Indian Hindustani tuning Pa-Sa-Pa-Sa"@en ;
+    rdfs:comment "Pa-Sa-Pa-Sa tuning, e.g. F-Bb-F-Bb, used in Hindustani violin."@en ;
+    prov:wasDerivedFrom _:prov040 .
+
+
+tuning:arabic-gdgd a skos:Concept ;
+    skos:prefLabel "Arabic tuning G-D-G-D"@en ;
+    rdfs:comment "A and E strings lowered a whole step to ease playing Arabic maqams."@en ;
+    prov:wasDerivedFrom _:prov041 .
+
+
+tuning:scordatura a skos:Concept ;
+    skos:prefLabel "Scordatura"@en ;
+    rdfs:comment "Non-standard tuning used for special musical effects."@en ;
+    prov:wasDerivedFrom _:prov042 .
+
+
+tuning:cross-tuning a skos:Concept ;
+    skos:prefLabel "Cross tuning"@en ;
+    rdfs:comment "Non-standard tuning used in folk styles."@en ;
+    prov:wasDerivedFrom _:prov043 .
+
+
+# ===============================================================
+# Instrument Instances
+# ===============================================================
+
+
+instrument:violin a mi:BowedStringInstrument ;
+    rdfs:label "Violin"@en ;
+    rdfs:comment "Smallest, highest-pitched member of the violin family; a wooden chordophone."@en ;
+    mi:hasProduction mi:acoustic-sound ;
+    mi:madeOf material:spruce-and-maple ,
+              material:spruce ,
+              material:maple ,
+              material:ebony ;
+    mi:hasScale tuning:standard-gdae ;
+    mi:hasGenre genre:classical ,
+                genre:folk ,
+                genre:country ,
+                genre:bluegrass ,
+                genre:jazz ,
+                genre:indian-classical ,
+                genre:iranian-classical ,
+                genre:arabic-classical ,
+                genre:popular ,
+                genre:baroque ;
+    prov:wasDerivedFrom _:prov044 , _:prov045 , _:prov046 , _:prov047 ,
+                        _:prov048 , _:prov049 , _:prov050 , _:prov051 ;
+    prov:wasGeneratedBy <urn:extraction:violin-wikipedia-mode2> .
+
+
+instrument:fiddle a mi:BowedStringInstrument ;
+    rdfs:label "Fiddle"@en ;
+    rdfs:comment "Informal name for the violin, especially in folk music contexts."@en ;
+    mi:hasProduction mi:acoustic-sound ;
+    mi:hasGenre genre:folk ,
+                genre:country ,
+                genre:bluegrass ;
+    prov:wasDerivedFrom _:prov052 ;
+    prov:wasGeneratedBy <urn:extraction:violin-wikipedia-mode2> .
+
+
+instrument:violino-piccolo a mi:BowedStringInstrument ;
+    rdfs:label "Violino piccolo"@en ;
+    rdfs:comment "Smaller violin-type instrument, virtually unused."@en ;
+    mi:hasProduction mi:acoustic-sound ;
+    prov:wasDerivedFrom _:prov053 ;
+    prov:wasGeneratedBy <urn:extraction:violin-wikipedia-mode2> .
+
+
+instrument:pochette a mi:BowedStringInstrument ;
+    rdfs:label "Pochette"@en ;
+    rdfs:comment "Small violin-type instrument, virtually unused."@en ;
+    mi:hasProduction mi:acoustic-sound ;
+    prov:wasDerivedFrom _:prov054 ;
+    prov:wasGeneratedBy <urn:extraction:violin-wikipedia-mode2> .
+
+
+instrument:viola a mi:BowedStringInstrument ;
+    rdfs:label "Viola"@en ;
+    rdfs:comment "Violin family member; developed from the violin; slightly larger."@en ;
+    mi:hasProduction mi:acoustic-sound ;
+    mi:hasGenre genre:classical ;
+    prov:wasDerivedFrom _:prov055 ;
+    prov:wasGeneratedBy <urn:extraction:violin-wikipedia-mode2> .
+
+
+instrument:cello a mi:BowedStringInstrument ;
+    rdfs:label "Cello"@en ;
+    rdfs:comment "Bass-register member of the violin family."@en ;
+    mi:hasProduction mi:acoustic-sound ;
+    mi:hasGenre genre:classical ;
+    prov:wasDerivedFrom _:prov056 ;
+    prov:wasGeneratedBy <urn:extraction:violin-wikipedia-mode2> .
+
+
+instrument:double-bass a mi:BowedStringInstrument ;
+    rdfs:label "Double bass"@en ;
+    rdfs:comment "Largest and lowest-pitched bowed string instrument in common use."@en ;
+    mi:hasProduction mi:acoustic-sound ;
+    mi:hasGenre genre:classical ,
+                genre:jazz ;
+    prov:wasDerivedFrom _:prov057 ;
+    prov:wasGeneratedBy <urn:extraction:violin-wikipedia-mode2> .
+
+
+instrument:mezzo-violin a mi:BowedStringInstrument ;
+    rdfs:label "Mezzo violin"@en ;
+    rdfs:comment "Violin octet instrument tuned as a violin but with a slightly longer body."@en ;
+    mi:hasProduction mi:acoustic-sound ;
+    mi:hasScale tuning:standard-gdae ;
+    prov:wasDerivedFrom _:prov058 ;
+    prov:wasGeneratedBy <urn:extraction:violin-wikipedia-mode2> .
+
+
+instrument:charles-ix-amati a mi:BowedStringInstrument ;
+    rdfs:label "Charles IX violin by Andrea Amati (c.1560)"@en ;
+    rdfs:comment "Oldest surviving violin; commissioned by French king Charles IX."@en ;
+    mi:hasProduction mi:acoustic-sound ;
+    prov:wasDerivedFrom _:prov059 ;
+    prov:wasGeneratedBy <urn:extraction:violin-wikipedia-mode2> .
+
+
+instrument:gasparo-da-salo-violin a mi:BowedStringInstrument ;
+    rdfs:label "Gasparo da Salo violin (c.1574)"@en ;
+    rdfs:comment "Finest Renaissance carved and decorated violin; owned by Ferdinand II and later Ole Bull."@en ;
+    mi:hasProduction mi:acoustic-sound ;
+    prov:wasDerivedFrom _:prov060 ;
+    prov:wasGeneratedBy <urn:extraction:violin-wikipedia-mode2> .
+
+
+instrument:messiah-stradivarius a mi:BowedStringInstrument ;
+    rdfs:label "Messiah Stradivarius (1716)"@en ;
+    rdfs:comment "Made by Antonio Stradivari in 1716; remains in pristine condition in the Ashmolean Museum."@en ;
+    mi:hasProduction mi:acoustic-sound ;
+    mi:madeOf material:spruce-and-maple ;
+    prov:wasDerivedFrom _:prov061 ;
+    prov:wasGeneratedBy <urn:extraction:violin-wikipedia-mode2> .
+
+
+instrument:lady-blunt-stradivarius a mi:BowedStringInstrument ;
+    rdfs:label "Lady Blunt Stradivarius"@en ;
+    rdfs:comment "Stradivari violin sold at auction in 2011 for 9.8 million pounds."@en ;
+    mi:hasProduction mi:acoustic-sound ;
+    prov:wasDerivedFrom _:prov062 ;
+    prov:wasGeneratedBy <urn:extraction:violin-wikipedia-mode2> .
+
+
+instrument:stainer-1658-baroque-violin a mi:BowedStringInstrument ;
+    rdfs:label "1658 Baroque violin by Jacob Stainer"@en ;
+    rdfs:comment "Baroque violin made by Jacob Stainer in 1658."@en ;
+    mi:hasProduction mi:acoustic-sound ;
+    prov:wasDerivedFrom _:prov063 ;
+    prov:wasGeneratedBy <urn:extraction:violin-wikipedia-mode2> .
+
+
+instrument:greek-lyre a mi:PluckedStringInstrument ;
+    rdfs:label "Greek lyre"@en ;
+    rdfs:comment "Ancient plucked string instrument."@en ;
+    mi:hasProduction mi:acoustic-sound ;
+    prov:wasDerivedFrom _:prov064 ;
+    prov:wasGeneratedBy <urn:extraction:violin-wikipedia-mode2> .
+
+
+instrument:morin-huur a mi:BowedStringInstrument ;
+    rdfs:label "Morin huur"@en ;
+    rdfs:comment "Mongolian two-stringed bowed instrument."@en ;
+    mi:hasProduction mi:acoustic-sound ;
+    prov:wasDerivedFrom _:prov065 ;
+    prov:wasGeneratedBy <urn:extraction:violin-wikipedia-mode2> .
+
+
+instrument:kobyz a mi:BowedStringInstrument ;
+    rdfs:label "Kobyz"@en ;
+    rdfs:comment "Kazakh two-stringed bowed instrument."@en ;
+    mi:hasProduction mi:acoustic-sound ;
+    prov:wasDerivedFrom _:prov066 ;
+    prov:wasGeneratedBy <urn:extraction:violin-wikipedia-mode2> .
+
+
+instrument:rebec a mi:BowedStringInstrument ;
+    rdfs:label "Rebec"@en ;
+    rdfs:comment "Medieval bowed string instrument considered an ancestor of the violin."@en ;
+    mi:hasProduction mi:acoustic-sound ;
+    prov:wasDerivedFrom _:prov067 ;
+    prov:wasGeneratedBy <urn:extraction:violin-wikipedia-mode2> .
+
+
+instrument:lira-da-braccio a mi:BowedStringInstrument ;
+    rdfs:label "Lira da braccio"@en ;
+    rdfs:comment "Renaissance bowed string instrument; ancestor of the violin."@en ;
+    mi:hasProduction mi:acoustic-sound ;
+    prov:wasDerivedFrom _:prov068 ;
+    prov:wasGeneratedBy <urn:extraction:violin-wikipedia-mode2> .
+
+
+instrument:vielle a mi:BowedStringInstrument ;
+    rdfs:label "Vielle"@en ;
+    rdfs:comment "Medieval fiddle also known as the fidel or viuola."@en ;
+    mi:hasProduction mi:acoustic-sound ;
+    prov:wasDerivedFrom _:prov069 ;
+    prov:wasGeneratedBy <urn:extraction:violin-wikipedia-mode2> .
+
+
+instrument:byzantine-lyra a mi:BowedStringInstrument ;
+    rdfs:label "Byzantine lyra"@en ;
+    rdfs:comment "Bowed string instrument of the Byzantine Empire."@en ;
+    mi:hasProduction mi:acoustic-sound ;
+    prov:wasDerivedFrom _:prov070 ;
+    prov:wasGeneratedBy <urn:extraction:violin-wikipedia-mode2> .
+
+
+instrument:viola-da-gamba a mi:BowedStringInstrument ;
+    rdfs:label "Viola da gamba"@en ;
+    rdfs:comment "Bass viol held between the legs."@en ;
+    mi:hasProduction mi:acoustic-sound ;
+    prov:wasDerivedFrom _:prov071 ;
+    prov:wasGeneratedBy <urn:extraction:violin-wikipedia-mode2> .
+
+
+instrument:viola-da-braccio a mi:BowedStringInstrument ;
+    rdfs:label "Viola da braccio"@en ;
+    rdfs:comment "Arm viola; the violin is the modern form of this instrument."@en ;
+    mi:hasProduction mi:acoustic-sound ;
+    prov:wasDerivedFrom _:prov072 ;
+    prov:wasGeneratedBy <urn:extraction:violin-wikipedia-mode2> .
+
+
+instrument:rababah a mi:BowedStringInstrument ;
+    rdfs:label "Rababah"@en ;
+    rdfs:comment "Arabic bowed string instrument."@en ;
+    mi:hasProduction mi:acoustic-sound ;
+    mi:hasGenre genre:arabic-classical ;
+    prov:wasDerivedFrom _:prov073 ;
+    prov:wasGeneratedBy <urn:extraction:violin-wikipedia-mode2> .
+
+
+instrument:electric-violin a mi:ElectronicStringInstrument ;
+    rdfs:label "Electric violin"@en ;
+    rdfs:comment "Violin with magnetic or piezoelectric pickup converting string vibration to electric signal."@en ;
+    mi:hasProduction mi:electric-sound ;
+    mi:electricSound mechanism:piezoelectric-pickup ,
+                     mechanism:magnetic-pickup ;
+    mi:hasGenre genre:rock ,
+                genre:jazz-fusion ,
+                genre:popular ;
+    prov:wasDerivedFrom _:prov074 , _:prov075 ;
+    prov:wasGeneratedBy <urn:extraction:violin-wikipedia-mode2> .
+
+
+instrument:electro-acoustic-violin a mi:ElectronicStringInstrument ;
+    rdfs:label "Electro-acoustic violin"@en ;
+    rdfs:comment "Electric violin with a resonating body that also produces acoustic-level sound."@en ;
+    mi:hasProduction mi:electric-sound ,
+                     mi:acoustic-sound ;
+    prov:wasDerivedFrom _:prov076 ;
+    prov:wasGeneratedBy <urn:extraction:violin-wikipedia-mode2> .
+
+
+instrument:five-string-electric-violin a mi:ElectronicStringInstrument ;
+    rdfs:label "Five-string electric violin"@en ;
+    rdfs:comment "Electric violin with five strings."@en ;
+    mi:hasProduction mi:electric-sound ;
+    prov:wasDerivedFrom _:prov077 ;
+    prov:wasGeneratedBy <urn:extraction:violin-wikipedia-mode2> .
+
+
+instrument:seven-string-electric-violin a mi:ElectronicStringInstrument ;
+    rdfs:label "Seven-string electric violin"@en ;
+    rdfs:comment "Electric violin with seven strings, three lower strings encompassing the cello range."@en ;
+    mi:hasProduction mi:electric-sound ;
+    prov:wasDerivedFrom _:prov078 ;
+    prov:wasGeneratedBy <urn:extraction:violin-wikipedia-mode2> .
+
+
+instrument:piano a mi:KeyboardInstrument ;
+    rdfs:label "Piano"@en ;
+    mi:hasProduction mi:acoustic-sound ;
+    prov:wasDerivedFrom _:prov079 ;
+    prov:wasGeneratedBy <urn:extraction:violin-wikipedia-mode2> .
+
+
+instrument:accordion a mi:KeyboardInstrument ;
+    rdfs:label "Accordion"@en ;
+    mi:hasProduction mi:acoustic-sound ;
+    prov:wasDerivedFrom _:prov079 ;
+    prov:wasGeneratedBy <urn:extraction:violin-wikipedia-mode2> .
+
+
+instrument:oboe a mi:WoodwindInstrument ;
+    rdfs:label "Oboe"@en ;
+    rdfs:comment "Woodwind instrument used to tune orchestras."@en ;
+    mi:hasProduction mi:acoustic-sound ;
+    prov:wasDerivedFrom _:prov080 ;
+    prov:wasGeneratedBy <urn:extraction:violin-wikipedia-mode2> .
+
+
+instrument:guitar a mi:PluckedStringInstrument ;
+    rdfs:label "Guitar"@en ;
+    mi:hasProduction mi:acoustic-sound ;
+    prov:wasDerivedFrom _:prov081 ;
+    prov:wasGeneratedBy <urn:extraction:violin-wikipedia-mode2> .
+
+
+instrument:electric-guitar a mi:ElectronicStringInstrument ;
+    rdfs:label "Electric guitar"@en ;
+    mi:hasProduction mi:electric-sound ;
+    prov:wasDerivedFrom _:prov082 ;
+    prov:wasGeneratedBy <urn:extraction:violin-wikipedia-mode2> .
+
+
+instrument:synthesizer a mi:ElectronicKeyboardInstrument ;
+    rdfs:label "Synthesizer"@en ;
+    rdfs:comment "Electronic keyboard instrument that replaced violin parts in 1980s popular music."@en ;
+    mi:hasProduction mi:electric-sound ;
+    mi:electricSound mi:synthesizer ;
+    prov:wasDerivedFrom _:prov083 ;
+    prov:wasGeneratedBy <urn:extraction:violin-wikipedia-mode2> .
+
+
+instrument:wheel-fiddle a mi:BowedStringInstrument ;
+    rdfs:label "Wheel fiddle"@en ;
+    mi:hasProduction mi:acoustic-sound ;
+    mi:hasGenre genre:folk ;
+    prov:wasDerivedFrom _:prov084 ;
+    prov:wasGeneratedBy <urn:extraction:violin-wikipedia-mode2> .
+
+
+instrument:apache-fiddle a mi:BowedStringInstrument ;
+    rdfs:label "Apache fiddle"@en ;
+    mi:hasProduction mi:acoustic-sound ;
+    mi:hasGenre genre:folk ;
+    prov:wasDerivedFrom _:prov085 ;
+    prov:wasGeneratedBy <urn:extraction:violin-wikipedia-mode2> .
+
+
+# ===============================================================
+# Additional mi:hasScale links
+# (beyond those already on instrument:violin above)
+# ===============================================================
+
+
+# The Indian violin uses special tunings
+instrument:violin mi:hasScale tuning:south-indian ,
+                              tuning:north-indian-hindustani ,
+                              tuning:arabic-gdgd ,
+                              tuning:scordatura ,
+                              tuning:cross-tuning .
+
+
+# ===============================================================
+# Provenance — Text Position Selectors (PROV-O + Web Annotation)
+# ===============================================================
+
+
+
+_:prov001 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 1052 ;
+    oa:end 1073 .
+
+
+_:prov002 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 21491 ;
+    oa:end 21523 .
+
+
+_:prov003 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 7456 ;
+    oa:end 7493 .
+
+
+_:prov004 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 7475 ;
+    oa:end 7488 .
+
+
+_:prov005 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 7558 ;
+    oa:end 7577 .
+
+
+_:prov006 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 9537 ;
+    oa:end 9569 .
+
+
+_:prov007 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 12145 ;
+    oa:end 12180 .
+
+
+_:prov008 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 12174 ;
+    oa:end 12204 .
+
+
+_:prov009 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 2550 ;
+    oa:end 2575 .
+
+
+_:prov010 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 2580 ;
+    oa:end 2593 .
+
+
+_:prov011 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 12513 ;
+    oa:end 12531 .
+
+
+_:prov012 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 16268 ;
+    oa:end 16287 .
+
+
+_:prov013 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 16874 ;
+    oa:end 16883 .
+
+
+_:prov014 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 16889 ;
+    oa:end 16940 .
+
+
+_:prov015 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 16924 ;
+    oa:end 16939 .
+
+
+_:prov016 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 16981 ;
+    oa:end 17004 .
+
+
+_:prov017 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 17123 ;
+    oa:end 17143 .
+
+
+_:prov018 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 16655 ;
+    oa:end 16690 .
+
+
+_:prov019 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 8457 ;
+    oa:end 8473 .
+
+
+_:prov020 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 52 ;
+    oa:end 70 .
+
+
+_:prov021 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 7456 ;
+    oa:end 7493 .
+
+
+_:prov022 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 7558 ;
+    oa:end 7577 .
+
+
+_:prov023 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 769 ;
+    oa:end 818 .
+
+
+_:prov024 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 928 ;
+    oa:end 956 .
+
+
+_:prov025 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 968 ;
+    oa:end 981 .
+
+
+_:prov026 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 983 ;
+    oa:end 998 .
+
+
+_:prov027 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 1000 ;
+    oa:end 1011 .
+
+
+_:prov028 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 1115 ;
+    oa:end 1126 .
+
+
+_:prov029 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 1086 ;
+    oa:end 1110 .
+
+
+_:prov030 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 20033 ;
+    oa:end 20065 .
+
+
+_:prov031 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 15609 ;
+    oa:end 15631 .
+
+
+_:prov032 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 15735 ;
+    oa:end 15758 .
+
+
+_:prov033 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 15838 ;
+    oa:end 15860 .
+
+
+_:prov034 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 19584 ;
+    oa:end 19611 .
+
+
+_:prov035 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 12748 ;
+    oa:end 12761 .
+
+
+_:prov036 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> .
+
+
+_:prov037 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 19649 ;
+    oa:end 19668 .
+
+
+_:prov038 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 392 ;
+    oa:end 441 .
+
+
+_:prov039 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 15683 ;
+    oa:end 15729 .
+
+
+_:prov040 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> .
+
+
+_:prov041 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 15866 ;
+    oa:end 15923 .
+
+
+_:prov042 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 15487 ;
+    oa:end 15555 .
+
+
+_:prov043 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 15557 ;
+    oa:end 15603 .
+
+
+_:prov044 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 0 ;
+    oa:end 70 .
+
+
+_:prov045 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 295 ;
+    oa:end 333 .
+
+
+_:prov046 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 7456 ;
+    oa:end 7493 .
+
+
+_:prov047 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 7558 ;
+    oa:end 7577 .
+
+
+_:prov048 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 465 ;
+    oa:end 507 .
+
+
+_:prov049 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 769 ;
+    oa:end 818 .
+
+
+_:prov050 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 928 ;
+    oa:end 1011 .
+
+
+_:prov051 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 392 ;
+    oa:end 441 .
+
+
+_:prov052 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 3418 ;
+    oa:end 3453 .
+
+
+_:prov053 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 229 ;
+    oa:end 261 .
+
+
+_:prov054 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 249 ;
+    oa:end 293 .
+
+
+_:prov055 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 1629 ;
+    oa:end 1725 .
+
+
+_:prov056 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 18915 ;
+    oa:end 18952 .
+
+
+_:prov057 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 18937 ;
+    oa:end 18952 .
+
+
+_:prov058 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 14480 ;
+    oa:end 14552 .
+
+
+_:prov059 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 5561 ;
+    oa:end 5607 .
+
+
+_:prov060 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 5729 ;
+    oa:end 5757 .
+
+
+_:prov061 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 5987 ;
+    oa:end 6015 .
+
+
+_:prov062 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 7311 ;
+    oa:end 7354 .
+
+
+_:prov063 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 6241 ;
+    oa:end 6277 .
+
+
+_:prov064 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 4138 ;
+    oa:end 4152 .
+
+
+_:prov065 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 4355 ;
+    oa:end 4375 .
+
+
+_:prov066 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 4384 ;
+    oa:end 4396 .
+
+
+_:prov067 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 4541 ;
+    oa:end 4627 .
+
+
+_:prov068 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 4559 ;
+    oa:end 4613 .
+
+
+_:prov069 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 4851 ;
+    oa:end 4897 .
+
+
+_:prov070 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 4800 ;
+    oa:end 4834 .
+
+
+_:prov071 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 3205 ;
+    oa:end 3227 .
+
+
+_:prov072 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 3384 ;
+    oa:end 3400 .
+
+
+_:prov073 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 21386 ;
+    oa:end 21404 .
+
+
+_:prov074 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 1013 ;
+    oa:end 1073 .
+
+
+_:prov075 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 21467 ;
+    oa:end 21523 .
+
+
+_:prov076 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 21910 ;
+    oa:end 21933 .
+
+
+_:prov077 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 22611 ;
+    oa:end 22655 .
+
+
+_:prov078 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 22690 ;
+    oa:end 22776 .
+
+
+_:prov079 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 15005 ;
+    oa:end 15025 .
+
+
+_:prov080 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 15132 ;
+    oa:end 15192 .
+
+
+_:prov081 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> .
+
+
+_:prov082 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 22401 ;
+    oa:end 22429 .
+
+
+_:prov083 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 19861 ;
+    oa:end 19929 .
+
+
+_:prov084 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 21095 ;
+    oa:end 21107 .
+
+
+_:prov085 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 21112 ;
+    oa:end 21125 .
+
+
+_:prov086 a oa:TextPositionSelector ;
+    oa:hasSource <https://en.wikipedia.org/wiki/Violin> ;
+    oa:start 15683 ;
+    oa:end 15729 .
+
+# ===============================================================
+# GAPS — Information the ontology cannot represent
+# ===============================================================
+#
+# 1. PERSONS / MAKERS (no mi:Person or mi:Luthier class):
+#    - Andrea Amati, Stradivari family, Guarneri family, Guadagnini,
+#      Jacob Stainer, Gasparo da Salo, Giovanni Paolo Maggini,
+#      Matteo Goffriller, Montagnana, etc.
+#    - Performers: Ole Bull, Jimi Hendrix, Itzhak Perlman,
+#      Joe Venuti, Stephane Grappelli, Jean-Luc Ponty,
+#      Vanessa-Mae, Lindsey Stirling, etc.
+#
+# 2. COMPOSITIONS (no mi:Composition class):
+#    - Danse Macabre (Saint-Saens), Contrasts (Bartok),
+#      Paganini Violin Concerto No.1, Mystery Sonatas (Biber),
+#      Symphonie Fantastique (Berlioz), The Planets (Holst), etc.
+#
+# 3. LOCATIONS / PROVENANCE (no mi:Place class):
+#    - Brescia, Cremona, Italy, Austria, Venice, Lyon, etc.
+#
+# 4. TIME PERIODS (no temporal class):
+#    - "16th century", "Baroque era", "Golden Age", "1716", etc.
+#
+# 5. INSTRUMENT PARTS (no mi:InstrumentPart class):
+#    - Bridge, soundpost, tailpiece, chinrest, fingerboard, pegbox,
+#      scroll, f-holes, purfling, nut, endpin, etc.
+#
+# 6. PLAYING TECHNIQUES (no mi:Technique class):
+#    - Pizzicato, col legno, arco, spiccato, martele, tremolo,
+#      vibrato, harmonics, double stops, scordatura, etc.
+#
+# 7. BOW as separate entity (no mi:Bow class):
+#    - The bow is extensively described but has no dedicated class.
+#
+# 8. TUNING DETAILS beyond what mi:hasScale can express:
+#    - Iranian Dastgah-specific tunings (e.g. Dastgah-e Esfahan E-A-E-A)
+#    - Specific maqam systems
+#    - A=440 Hz reference pitch
+#
+# ===============================================================
