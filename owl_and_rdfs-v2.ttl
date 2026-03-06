@@ -4,6 +4,8 @@
 @prefix xsd:       <http://www.w3.org/2001/XMLSchema#> .
 @prefix skos:      <http://www.w3.org/2004/02/skos/core#> .
 @prefix mi:        <http://mymusicalinstruments.org/> .
+@prefix schema:    <http://mymusicalinstruments.org/schema/>
+@prefix data:      <http://mymusicalinstruments.org/data/>
 
 # SKOS Concepts
 
