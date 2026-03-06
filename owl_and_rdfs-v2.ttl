@@ -1,0 +1,312 @@
+@prefix rdf:       <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:      <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:       <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:       <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:      <http://www.w3.org/2004/02/skos/core#> .
+@prefix mi:        <http://mymusicalinstruments.org/> .
+
+# SKOS Concepts
+
+## Family Scheme
+mi:scheme-family a skos:ConceptScheme ;
+  skos:prefLabel    "Instrument families"@en ;
+  skos:definition   "Classifies instruments by organological family, sub-family, instrument, and variant."@en ;
+  skos:hasTopConcept
+    mi:string-instrument ,
+    mi:wind-instrument ,
+    mi:percussion-instrument ,
+    mi:keyboard-instrument ,
+    mi:electronic-instrument ;
+.
+
+mi:string-instrument rdf:type skos:Concept ;
+  skos:prefLabel    "String instruments"@en ;
+  skos:altLabel     "Chordophones"@en ;
+  skos:definition   "Instruments producing tones by strings stretched between two points."@en ;
+  skos:exactMatch   <http://www.wikidata.org/wiki/Q1798603> ;
+  skos:topConceptOf mi:scheme-family ;
+  skos:inScheme     mi:scheme-family ;
+  skos:narrower     mi:bowed-string-instrument ,
+                    mi:plucked-string-instrument ;
+.
+
+mi:wind-instrument rdf:type skos:Concept ;
+  skos:prefLabel    "Wind instruments"@en ;
+  skos:definition   "Instruments producing sound by vibration of air."@en ;
+  skos:topConceptOf mi:scheme-family ;
+  skos:inScheme     mi:scheme-family ;
+  skos:narrower     mi:brass-instrument ,
+                    mi:woodwind-instrument ;
+.
+
+mi:percussion-instrument rdf:type skos:Concept ;
+  skos:prefLabel    "Percussion instruments"@en ;
+  skos:definition   "Instruments producing sound by being struck, shaken, or scraped."@en ;
+  skos:topConceptOf mi:scheme-family ;
+  skos:inScheme     mi:scheme-family ;
+.
+
+mi:keyboard-instrument rdf:type skos:Concept ;
+  skos:prefLabel    "Keyboard instruments"@en ;
+  skos:definition   "Instruments played via a keyboard triggering a sound mechanism."@en ;
+  skos:topConceptOf mi:scheme-family ;
+  skos:inScheme     mi:scheme-family ;
+.
+
+mi:electronic-instrument rdf:type skos:Concept ;
+  skos:prefLabel    "Electronic instruments"@en ;
+  skos:definition   "Instruments generating or modifying sounds via electronic circuitry."@en ;
+  skos:topConceptOf mi:scheme-family ;
+  skos:inScheme     mi:scheme-family ;
+  skos:narrower     mi:electronic-string-instrument ,
+                    mi:electronic-keyboard-instrument ;
+.
+
+mi:bowed-string-instrument rdf:type skos:Concept ;
+  skos:prefLabel  "Bowed string instruments"@en ;
+  skos:definition "String instruments played by drawing a bow across strings."@en ;
+  skos:broader    mi:string-instrument ;
+  skos:inScheme   mi:scheme-family ;
+.
+
+mi:plucked-string-instrument rdf:type skos:Concept ;
+  skos:prefLabel  "Plucked string instruments"@en ;
+  skos:definition "String instruments played by plucking with fingers or a plectrum."@en ;
+  skos:broader    mi:string-instrument ;
+  skos:inScheme   mi:scheme-family ;
+.
+
+mi:brass-instrument rdf:type skos:Concept ;
+  skos:prefLabel  "Brass instruments"@en ;
+  skos:definition "Wind instruments producing sound by lip vibration in a mouthpiece."@en ;
+  skos:broader    mi:wind-instrument ;
+  skos:inScheme   mi:scheme-family ;
+.
+
+mi:woodwind-instrument rdf:type skos:Concept ;
+  skos:prefLabel  "Woodwind instruments"@en ;
+  skos:definition "Wind instruments producing sound by splitting an air stream or via reeds."@en ;
+  skos:broader    mi:wind-instrument ;
+  skos:inScheme   mi:scheme-family ;
+.
+
+mi:electronic-string-instrument rdf:type skos:Concept ;
+  skos:prefLabel  "Electronic string instruments"@en ;
+  skos:definition "String instruments using electronics for primary amplification."@en ;
+  skos:broader    mi:electronic-instrument ;
+  skos:inScheme   mi:scheme-family ;
+.
+
+mi:electronic-keyboard-instrument rdf:type skos:Concept ;
+  skos:prefLabel  "Electronic keyboard instruments"@en ;
+  skos:definition "Keyboard instruments whose sound is electronically generated."@en ;
+  skos:broader    mi:electronic-instrument ;
+  skos:inScheme   mi:scheme-family ;
+.
+
+## Production Scheme
+mi:scheme-production a skos:ConceptScheme ;
+  skos:prefLabel    "Sound production mechanisms"@en ;
+  skos:definition   "Classifies how an instrument generates its sound."@en ;
+  skos:hasTopConcept
+    mi:acoustic-sound ,
+    mi:electric-sound ;
+.
+
+mi:acoustic-sound rdf:type skos:Concept , mi:SoundMechanism ;
+  skos:prefLabel    "Acoustic sound"@en ;
+  skos:definition   "Sound produced by physical vibration without electronic amplification."@en ;
+  skos:topConceptOf mi:scheme-production ;
+  skos:inScheme     mi:scheme-production ;
+.
+
+mi:electric-sound rdf:type skos:Concept , mi:ElectricSound ;
+  skos:prefLabel    "Electric sound"@en ;
+  skos:definition   "Sound produced or shaped by electronic components or synthesis."@en ;
+  skos:topConceptOf mi:scheme-production ;
+  skos:inScheme     mi:scheme-production ;
+  skos:narrower     mi:synthesizer ;
+.
+
+mi:synthesizer rdf:type skos:Concept ;
+  skos:prefLabel  "Synthesizer"@en ;
+  skos:definition "Sound generated entirely by electronic synthesis."@en ;
+  skos:broader    mi:electric-sound ;
+  skos:inScheme   mi:scheme-production ;
+.
+
+# ═══════════════════════════════════════════════════════════════
+# TBox — OWL Classes
+# ═══════════════════════════════════════════════════════════════
+
+mi:Instrument rdf:type owl:Class ;
+  rdfs:comment "Any device constructed or used to make musical sounds."@en .
+
+mi:SoundMechanism rdf:type owl:Class ;
+  rdfs:comment "The physical or electronic mechanism producing sound."@en .
+
+mi:BodyMaterial rdf:type owl:Class ;
+  rdfs:comment "A material from which an instrument body is constructed."@en .
+
+## Instrument subclasses
+mi:StringInstrument rdf:type owl:Class ;
+  rdfs:subClassOf mi:Instrument ;
+  rdfs:label   "String instruments"@en ;
+  rdfs:comment "Instruments producing tones by strings between two points."@en .
+
+mi:ElectronicInstrument rdf:type owl:Class ;
+  rdfs:subClassOf mi:Instrument ;
+  rdfs:comment "Instruments generating or modifying sounds electronically."@en .
+
+mi:KeyboardInstrument rdf:type owl:Class ;
+  rdfs:subClassOf mi:Instrument ;
+  rdfs:comment "Instruments played via a keyboard triggering a sound mechanism."@en .
+
+mi:WindInstrument rdf:type owl:Class ;
+  rdfs:subClassOf mi:Instrument ;
+  rdfs:comment "Instruments producing sound by vibration of air."@en .
+
+mi:PercussionInstrument rdf:type owl:Class ;
+  rdfs:subClassOf mi:Instrument ;
+  rdfs:comment "Instruments producing sound by striking, shaking, or scraping."@en .
+
+## Family subclasses
+mi:BowedStringInstrument rdf:type owl:Class ;
+  rdfs:subClassOf mi:StringInstrument ;
+  rdfs:comment "String instruments played by drawing a bow across strings."@en .
+
+mi:PluckedStringInstrument rdf:type owl:Class ;
+  rdfs:subClassOf mi:StringInstrument ;
+  rdfs:comment "String instruments played by plucking with fingers or a plectrum."@en .
+
+mi:BrassInstrument rdf:type owl:Class ;
+  rdfs:subClassOf mi:WindInstrument ;
+  rdfs:comment "Wind instruments producing sound by lip vibration in a mouthpiece."@en .
+
+mi:WoodwindInstrument rdf:type owl:Class ;
+  rdfs:subClassOf mi:WindInstrument ;
+  rdfs:comment "Wind instruments producing sound by air stream splitting or reeds."@en .
+
+mi:ElectronicStringInstrument rdf:type owl:Class ;
+  rdfs:subClassOf mi:ElectronicInstrument ;
+  rdfs:comment "String instruments using electronics for primary amplification."@en .
+
+mi:ElectronicKeyboardInstrument rdf:type owl:Class ;
+  rdfs:subClassOf mi:ElectronicInstrument ;
+  rdfs:comment "Keyboard instruments whose sound is electronically generated."@en .
+
+## Sound mechanism subclasses
+mi:ElectricSound rdf:type owl:Class ;
+  rdfs:subClassOf mi:SoundMechanism ;
+  rdfs:comment "Sound produced or shaped by electronic components or synthesis."@en .
+
+mi:Synthesizer rdf:type owl:Class ;
+  rdfs:subClassOf mi:ElectricSound ;
+  rdfs:comment "Sound generated entirely by electronic synthesis."@en .
+
+# ═══════════════════════════════════════════════════════════════
+# TBox — Object Properties
+# ═══════════════════════════════════════════════════════════════
+
+# ── Existing properties ────────────────────────────────────────
+
+mi:hasProduction a owl:ObjectProperty ;
+  rdfs:label   "has sound production mechanism"@en ;
+  rdfs:comment "Links an instrument to its primary sound production mechanism."@en ;
+  rdfs:domain  mi:Instrument ;
+  rdfs:range   mi:SoundMechanism .
+
+mi:madeOf a owl:ObjectProperty ;
+  rdfs:label   "made of"@en ;
+  rdfs:comment "Links an instrument to the material of its body."@en ;
+  rdfs:domain  mi:Instrument ;
+  rdfs:range   mi:BodyMaterial .
+
+mi:electricSound a owl:ObjectProperty ;
+  rdfs:label   "electric sound type"@en ;
+  rdfs:comment "Links an electronic instrument to its electric sound mechanism."@en ;
+  rdfs:domain  mi:ElectronicInstrument ;
+  rdfs:range   mi:ElectricSound .
+
+# ── New object properties [v2] ─────────────────────────────────
+
+mi:hasScale a owl:ObjectProperty ;
+  rdfs:label   "has associated scale or tuning"@en ;
+  rdfs:comment "Links an instrument to a scale, mode, or tuning system."@en ;
+  rdfs:domain  mi:Instrument ;
+  rdfs:range   skos:Concept .
+
+mi:hasGenre a owl:ObjectProperty ;
+  rdfs:label   "used in genre"@en ;
+  rdfs:comment "Links an instrument to a music genre or tradition."@en ;
+  rdfs:domain  mi:Instrument ;
+  rdfs:range   skos:Concept .
+
+mi:modeOf a owl:ObjectProperty ;
+  rdfs:label   "is a mode of"@en ;
+  rdfs:comment "Indicates this scale is a modal rotation of another scale."@en ;
+  rdfs:domain  skos:Concept ;
+  rdfs:range   skos:Concept .
+
+mi:introducedFrom a owl:ObjectProperty ;
+  rdfs:label   "introduced from"@en ;
+  rdfs:comment "Cultural transmission of an instrument or tradition from a region."@en ;
+  rdfs:domain  skos:Concept ;
+  rdfs:range   skos:Concept .
+
+# ═══════════════════════════════════════════════════════════════
+# TBox — Datatype Properties  [NEW in v2]
+# ═══════════════════════════════════════════════════════════════
+
+mi:hasIntervalPattern a owl:DatatypeProperty ;
+  rdfs:label   "interval pattern"@en ;
+  rdfs:comment "Semitone interval sequence, e.g. '2-1-4-1-4'."@en ;
+  rdfs:domain  skos:Concept ;
+  rdfs:range   xsd:string .
+
+mi:scaleCardinality a owl:DatatypeProperty ;
+  rdfs:label   "scale cardinality"@en ;
+  rdfs:comment "Number of pitch classes (5 = pentatonic, 7 = heptatonic)."@en ;
+  rdfs:domain  skos:Concept ;
+  rdfs:range   xsd:integer .
+
+mi:isHemitonic a owl:DatatypeProperty ;
+  rdfs:label   "is hemitonic"@en ;
+  rdfs:comment "Whether the scale contains one or more semitone intervals."@en ;
+  rdfs:domain  skos:Concept ;
+  rdfs:range   xsd:boolean .
+
+# ═══════════════════════════════════════════════════════════════
+# ABox — Body Materials
+# ═══════════════════════════════════════════════════════════════
+
+mi:alder-and-maple rdf:type mi:BodyMaterial .
+mi:brass           rdf:type mi:BodyMaterial .
+mi:spruce-and-maple rdf:type mi:BodyMaterial .
+
+mi:paulownia-wood rdf:type mi:BodyMaterial ;
+  rdfs:label   "Paulownia wood"@en ;
+  rdfs:comment "Light wood traditionally used for the koto body."@en .
+
+mi:mulberry-and-catskin rdf:type mi:BodyMaterial ;
+  rdfs:label   "Mulberry wood and catskin"@en ;
+  rdfs:comment "Traditional shamisen body and membrane materials."@en .
+
+# ═══════════════════════════════════════════════════════════════
+# ABox — Instrument Instances
+# ═══════════════════════════════════════════════════════════════
+
+mi:messiah-stradivarius rdf:type mi:BowedStringInstrument ;
+  rdfs:label       "Messiah Stradivarius (1716)"@en ;
+  mi:hasProduction mi:acoustic-sound ;
+  mi:madeOf        mi:spruce-and-maple .
+
+mi:hendrix-woodstock-stratocaster rdf:type mi:ElectronicStringInstrument ;
+  rdfs:label       "Hendrix Woodstock Stratocaster"@en ;
+  mi:hasProduction mi:electric-sound ;
+  mi:madeOf        mi:alder-and-maple .
+
+mi:armstrong-selmer-paris-trumpet rdf:type mi:BrassInstrument ;
+  rdfs:label       "Armstrong 1946 Henri Selmer Paris Trumpet"@en ;
+  mi:hasProduction mi:acoustic-sound ;
+  mi:madeOf        mi:brass .
